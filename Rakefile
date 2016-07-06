@@ -15,7 +15,7 @@ end
 M4_SRC_FILES = FileList['ext/**/*.m4']
 M4_TARGET_FILES = M4_SRC_FILES.ext('')
 directory 'lib' => M4_TARGET_FILES
-CLEAN.include M4_TARGET_FILES
+CLEAN.include(M4_TARGET_FILES)
 
 M4_SRC_FILES.each do |m4_file|
   file m4_file.ext('') => m4_file do |t|

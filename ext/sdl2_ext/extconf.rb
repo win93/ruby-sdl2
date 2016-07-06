@@ -3,6 +3,7 @@ require 'mkmf'
 pkg_config "sdl2"
 pkg_config "SDL2_mixer"
 pkg_config "SDL2_ttf"
+pkg_config "SDL2_image"
 
 have_header "SDL_image.h"
 have_header "SDL_mixer.h"
