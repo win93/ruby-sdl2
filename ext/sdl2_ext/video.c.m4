@@ -2393,6 +2393,21 @@ static VALUE Surface_blit(VALUE self, VALUE dst, VALUE x, VALUE y)
 
 
 /*
+ * @overload fill_rect(rect, color)
+ *   Draw a filled rectangle using the given color.
+ *
+ *   @param rect [SDL2::Rect] the drawing rectangle
+ *   @param color [Integer]
+ *   
+ *   @return [nil]
+ */
+static VALUE Surface_fill_rect(VALUE self, VALUE rect, VALUE color)
+{
+    HANDLE_ERROR(SDL_FillRect(Get_SDL_Surface(self), Get_SDL_Rect_or_NULL(rect), NUM2UINT(color)));
+    return Qnil;
+}
+
+/*
  * @overload blit(src, srcrect, dst, dstrect)
  *   Perform a fast blit from **src** surface to **dst** surface.
  *
@@ -3057,6 +3072,7 @@ void rubysdl2_init_video(void)
     rb_define_method(cSurface, "bits_per_pixel", Surface_bits_per_pixel, 0);
     rb_define_method(cSurface, "bytes_per_pixel", Surface_bytes_per_pixel, 0);
     rb_define_method(cSurface, "blit", Surface_blit, 3);
+    rb_define_method(cSurface, "fill_rect", Surface_fill_rect, 2);
     
     cRect = rb_define_class_under(mSDL2, "Rect", rb_cObject);
 
