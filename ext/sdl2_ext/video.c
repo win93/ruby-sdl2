@@ -789,6 +789,37 @@ static VALUE Window_set_title(VALUE self, VALUE title)
 }
 
 /*
+ * @overload surface
+ *   Get the window surface.
+ *
+ *   @return [SDL2::Surface]
+ *
+ */
+static VALUE Window_surface(VALUE self)
+{
+  SDL_Surface *surface = SDL_GetWindowSurface(Get_SDL_Window(self));
+  if(surface == NULL) {
+    SDL_ERROR();
+    return Qnil;
+  } else {
+    return Surface_new(surface);
+  }
+}
+
+/*
+ * @overload update
+ *   Copy window surface to the screen.
+ *
+ *   @return [nil]
+ *
+ */
+static VALUE Window_update(VALUE self)
+{
+  HANDLE_ERROR(SDL_UpdateWindowSurface(Get_SDL_Window(self)));
+  return Qnil;
+}
+
+/*
 
 */
 /*
@@ -2346,6 +2377,35 @@ static VALUE Surface_h(VALUE self)
     return INT2NUM(Get_SDL_Surface(self)->h);
 }
 
+/*
+ * @overload blit(dst, x, y)
+ *   Perform a fast blit to **dst** surface.
+ *
+ *   @param dst [SDL2::Surface] the destination surface
+ *   @param x [Integer]
+ *   @param y [Integer]
+ *     Blits this surface onto the given destination surface at the given
+ *     coordinates.
+ *
+ *   @return [self]
+ */
+static VALUE Surface_blit(VALUE self, VALUE dst, VALUE x, VALUE y)
+{
+    SDL_Surface *surface = Get_SDL_Surface(self);
+    SDL_Rect rect;
+
+    rect.x = FIX2INT(x);
+    rect.y = FIX2INT(y);
+    rect.w = surface->w;
+    rect.h = surface->h;
+
+    HANDLE_ERROR(SDL_BlitSurface(surface,
+                                 NULL,
+                                 Get_SDL_Surface(dst),
+                                 &rect));
+    return self;
+}
+
 
 /*
  * @overload blit(src, srcrect, dst, dstrect)
@@ -2850,6 +2910,8 @@ void rubysdl2_init_video(void)
     rb_define_method(cWindow, "gl_drawable_size", Window_gl_drawable_size, 0);
 #endif
     rb_define_method(cWindow, "gl_swap", Window_gl_swap, 0);
+    rb_define_method(cWindow, "surface", Window_surface, 0);
+    rb_define_method(cWindow, "update", Window_update, 0);
 
     /* Indicate that you don't care what the window position is */
     rb_define_const(cWindow, "POS_CENTERED", INT2NUM(SDL_WINDOWPOS_CENTERED));
@@ -3039,6 +3101,7 @@ void rubysdl2_init_video(void)
     rb_define_method(cSurface, "pitch", Surface_pitch, 0);
     rb_define_method(cSurface, "bits_per_pixel", Surface_bits_per_pixel, 0);
     rb_define_method(cSurface, "bytes_per_pixel", Surface_bytes_per_pixel, 0);
+    rb_define_method(cSurface, "blit", Surface_blit, 3);
     
     cRect = rb_define_class_under(mSDL2, "Rect", rb_cObject);
 
