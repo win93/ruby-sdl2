@@ -222,7 +222,7 @@ static VALUE render(SDL_Surface* (*renderer)(TTF_Font*, const char*, SDL_Color, 
     SDL_Surface* surface;
     text = rb_str_export_to_enc(text, rb_utf8_encoding());
     surface = renderer(Get_TTF_Font(font), StringValueCStr(text),
-                       Array_to_SDL_Color(fg), Array_to_SDL_Color(bg));
+                       Color_to_SDL_Color(fg), Color_to_SDL_Color(bg));
     if (!surface)
         TTF_ERROR();
 

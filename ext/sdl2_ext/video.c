@@ -6,6 +6,7 @@
 #include <SDL_messagebox.h>
 #include <SDL_endian.h>
 #include <ruby/encoding.h>
+#include <assert.h>
 
 static VALUE cWindow;
 static VALUE mWindowFlags;
@@ -265,29 +266,6 @@ static VALUE RendererInfo_new(SDL_RendererInfo* info)
     return rinfo;
 }
 
-SDL_Color Array_to_SDL_Color(VALUE ary)
-{
-    SDL_Color color;
-    VALUE a;
-    if (ary == Qnil) {
-        color.r = color.g = color.b = 0; color.a = 255;
-        return color;
-    }
-        
-    Check_Type(ary, T_ARRAY);
-    if (RARRAY_LEN(ary) != 3 && RARRAY_LEN(ary) != 4)
-        rb_raise(rb_eArgError, "wrong number of Array elements (%ld for 3 or 4)",
-                 RARRAY_LEN(ary));
-    color.r = NUM2UCHAR(rb_ary_entry(ary, 0));
-    color.g = NUM2UCHAR(rb_ary_entry(ary, 1));
-    color.b = NUM2UCHAR(rb_ary_entry(ary, 2));
-    a = rb_ary_entry(ary, 3);
-    if (a == Qnil)
-        color.a = 255;
-    else
-        color.a = NUM2UCHAR(a);
-    return color;
-}
 
 /*
  * Get the names of all video drivers.
@@ -1407,7 +1385,7 @@ static VALUE Renderer_draw_color(VALUE self)
  *   * {#fill_rect}
  *   * {#clear}
  *   
- *   @param [[Integer, Integer, Integer]] color
+ *   @param [Integer] color
  *     red, green, and blue components used for drawing
  *   @param [[Integer, Integer, Integer, Integer]] color
  *     red, green, blue, and alpha components used for drawing
@@ -1418,7 +1396,7 @@ static VALUE Renderer_draw_color(VALUE self)
  */
 static VALUE Renderer_set_draw_color(VALUE self, VALUE rgba)
 {
-    SDL_Color color = Array_to_SDL_Color(rgba);
+    SDL_Color color = Color_to_SDL_Color(rgba);
     
     HANDLE_ERROR(SDL_SetRenderDrawColor(Get_SDL_Renderer(self),
                                         color.r, color.g, color.b, color.a));
@@ -1889,7 +1867,7 @@ static VALUE Texture_set_alpha_mod(VALUE self, VALUE alpha)
 /*
  * Get an additional color value used in render copy operations.
  *
- * @return [[Integer, Integer, Integer]] the current red, green, and blue
+ * @return [Integer] the current red, green, and blue
  *   color value.
  */
 static VALUE Texture_color_mod(VALUE self)
@@ -1903,13 +1881,13 @@ static VALUE Texture_color_mod(VALUE self)
  * @overload color_mod=(rgb) 
  *   Set an additional color value used in render copy operations.
  *   
- *   @param rgb [[Integer, Integer, Integer]] the red, green, and blue
+ *   @param rgb [Integer] the red, green, and blue
  *     color value multiplied into copy operations.
  *   @return [rgb]
  */
 static VALUE Texture_set_color_mod(VALUE self, VALUE rgb)
 {
-    SDL_Color color = Array_to_SDL_Color(rgb);
+    SDL_Color color = Color_to_SDL_Color(rgb);
     HANDLE_ERROR(SDL_SetTextureColorMod(Get_SDL_Texture(self),
                                         color.r, color.g, color.b));
     return rgb;
@@ -2378,7 +2356,7 @@ static VALUE Surface_h(VALUE self)
 }
 
 /*
- * @overload blit(dst, x, y)
+ * @overload blit_to(dst, x, y)
  *   Perform a fast blit to **dst** surface.
  *
  *   @param dst [SDL2::Surface] the destination surface
@@ -2389,7 +2367,7 @@ static VALUE Surface_h(VALUE self)
  *
  *   @return [self]
  */
-static VALUE Surface_blit(VALUE self, VALUE dst, VALUE x, VALUE y)
+static VALUE Surface_blit_to(VALUE self, VALUE dst, VALUE x, VALUE y)
 {
     SDL_Surface *surface = Get_SDL_Surface(self);
     SDL_Rect rect;
@@ -2416,9 +2394,11 @@ static VALUE Surface_blit(VALUE self, VALUE dst, VALUE x, VALUE y)
  *   
  *   @return [nil]
  */
-static VALUE Surface_fill_rect(VALUE self, VALUE rect, VALUE color)
+static VALUE Surface_fill_rect(VALUE self, VALUE rect, VALUE rgba)
 {
-    HANDLE_ERROR(SDL_FillRect(Get_SDL_Surface(self), Get_SDL_Rect_or_NULL(rect), NUM2UINT(color)));
+    /* Remove alpha channel */
+    Uint32 color = NUM2UINT(rgba) >> 8;
+    HANDLE_ERROR(SDL_FillRect(Get_SDL_Surface(self), Get_SDL_Rect_or_NULL(rect), color));
     return Qnil;
 }
 
@@ -2484,7 +2464,6 @@ static VALUE Surface_s_new(int argc, VALUE* argv, VALUE self)
     } else {
         rb_raise(rb_eArgError, "wrong number of arguments (%d for 4 or 7)", argc);
     }
-
     surface = SDL_CreateRGBSurface(0, NUM2INT(width), NUM2INT(height), NUM2INT(depth),
                                    Rmask, Gmask, Bmask, Amask);
     if (!surface)
@@ -3116,7 +3095,7 @@ void rubysdl2_init_video(void)
     rb_define_method(cSurface, "pitch", Surface_pitch, 0);
     rb_define_method(cSurface, "bits_per_pixel", Surface_bits_per_pixel, 0);
     rb_define_method(cSurface, "bytes_per_pixel", Surface_bytes_per_pixel, 0);
-    rb_define_method(cSurface, "blit", Surface_blit, 3);
+    rb_define_method(cSurface, "blit_to", Surface_blit_to, 3);
     rb_define_method(cSurface, "fill_rect", Surface_fill_rect, 2);
     
     cRect = rb_define_class_under(mSDL2, "Rect", rb_cObject);

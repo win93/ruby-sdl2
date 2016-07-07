@@ -21,6 +21,7 @@
 #ifndef RUBYSDL2_INTERNAL_H
 #define RUBYSDL2_INTERNAL_H
 
+
 #include <ruby.h>
 #include <ruby/encoding.h>
 #define SDL_MAIN_HANDLED
@@ -45,6 +46,7 @@ VALUE rubysdl2_find_window_by_id(Uint32 id);
 SDL_Rect* rubysdl2_Get_SDL_Rect(VALUE);
 SDL_Window* rubysdl2_Get_SDL_Window(VALUE);
 const char* rubysdl2_INT2BOOLCSTR(int);
+SDL_Color rubysdl2_Color_to_SDL_Color(VALUE rgba);
 
 /** initialize interfaces */
 void rubysdl2_init_hints(void);
@@ -62,6 +64,7 @@ void rubysdl2_init_ttf(void);
 void rubysdl2_init_filesystem(void);
 void rubysdl2_init_clipboard(void);
 void rubysdl2_init_gamecontorller(void);
+void rubysdl2_init_color(void);
 
 /** macros */
 #define HANDLE_ERROR(c) (rubysdl2_handle_error((c), __func__))
@@ -114,12 +117,11 @@ SDL2_EXTERN VALUE rubysdl2_eSDL2Error;
 #define Surface_new rubysdl2_Surface_new
 #define Get_SDL_Rect rubysdl2_Get_SDL_Rect
 #define Get_SDL_Window rubysdl2_Get_SDL_Window
-#define Array_to_SDL_Color rubysdl2_Array_to_SDL_Color 
 #define mSDL2 rubysdl2_mSDL2
 #define eSDL2Error rubysdl2_eSDL2Error
 #define SDL_version_to_String rubysdl2_SDL_version_to_String
 #define SDL_version_to_Array rubysdl2_SDL_version_to_Array
 #define INT2BOOLCSTR  rubysdl2_INT2BOOLCSTR 
 #define find_window_by_id rubysdl2_find_window_by_id
-
+#define Color_to_SDL_Color rubysdl2_Color_to_SDL_Color
 #endif
