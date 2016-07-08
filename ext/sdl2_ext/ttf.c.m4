@@ -201,6 +201,7 @@ TTF_ATTR_READER(face_style_name, FaceStyleName, utf8str_new_cstr);
 static VALUE TTF_size_text(VALUE self, VALUE text)
 {
     int w, h;
+    Check_Type(text, T_STRING);
     text = rb_str_export_to_enc(text, rb_utf8_encoding());
     HANDLE_TTF_ERROR(TTF_SizeUTF8(Get_TTF_Font(self), StringValueCStr(text), &w, &h));
     return rb_ary_new3(2, INT2NUM(w), INT2NUM(h));
