@@ -2413,6 +2413,31 @@ static VALUE Surface_s_blit(VALUE self, VALUE src, VALUE srcrect, VALUE dst, VAL
 }
 
 /*
+ * @overload blit_scaled(src, srcrect, dst, dstrect)
+ *   Perform a fast scaling blit from **src** surface to **dst** surface.
+ *
+ *   @param src [SDL2::Surface] the source surface
+ *   @param srcrect [SDL2::Rect,nil] the region in the source surface,
+ *     if nil is given, the whole source is used
+ *   @param dst [SDL2::Surface] the destination surface
+ *   @param dstrect [SDL2::Rect,nil] the region in the destination surface
+ *     if nil is given, the source image is copied to (0, 0) on
+ *     the destination surface.
+ *     **dstrect** is changed by this method to store the
+ *     actually copied region (since the surface has clipping functionality,
+ *     actually copied region may be different from given **dstrect**).
+ *   @return [nil]
+ */
+static VALUE Surface_s_blit_scaled(VALUE self, VALUE src, VALUE srcrect, VALUE dst, VALUE dstrect)
+{
+    HANDLE_ERROR(SDL_BlitScaled(Get_SDL_Surface(src),
+                                Get_SDL_Rect_or_NULL(srcrect),
+                                Get_SDL_Surface(dst),
+                                Get_SDL_Rect_or_NULL(dstrect)));
+    return Qnil;
+}
+
+/*
  * Create an empty RGB surface.
  *
  * If rmask, gmask, bmask are omitted, the default masks are used.
@@ -3031,6 +3056,7 @@ void rubysdl2_init_video(void)
     rb_undef_alloc_func(cSurface);
     rb_define_singleton_method(cSurface, "load_bmp", Surface_s_load_bmp, 1);
     rb_define_singleton_method(cSurface, "blit", Surface_s_blit, 4);
+    rb_define_singleton_method(cSurface, "blit_scaled", Surface_s_blit_scaled, 4);
     rb_define_singleton_method(cSurface, "new", Surface_s_new, -1);
     rb_define_singleton_method(cSurface, "from_string", Surface_s_from_string, -1);
     rb_define_method(cSurface, "destroy?", Surface_destroy_p, 0);
