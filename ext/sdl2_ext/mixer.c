@@ -124,7 +124,7 @@ DEFINE_WRAPPER(Mix_Music, Music, music, cMusic, "SDL2::Mixer::Music");
 static VALUE Mixer_s_init(VALUE self, VALUE f)
 {
     int flags = NUM2INT(f);
-    if (Mix_Init(flags) & flags != flags) 
+    if ((Mix_Init(flags) & flags) != flags) 
         rb_raise(eSDL2Error, "Couldn't initialize SDL_mixer");
     
     return Qnil;
@@ -1071,14 +1071,23 @@ void rubysdl2_init_mixer(void)
     rb_define_const(mMixer, "INIT_FLAC", UINT2NUM(MIX_INIT_FLAC));
     /* Initialize MOD loader */
     rb_define_const(mMixer, "INIT_MOD", UINT2NUM(MIX_INIT_MOD));
-    /* Initialize libmodplug */
-    rb_define_const(mMixer, "INIT_MODPLUG", UINT2NUM(MIX_INIT_MODPLUG));
     /* Initialize MP3 loader */
     rb_define_const(mMixer, "INIT_MP3", UINT2NUM(MIX_INIT_MP3));
     /* Initialize Ogg vorbis loader */
     rb_define_const(mMixer, "INIT_OGG", UINT2NUM(MIX_INIT_OGG));
+
+#if HAVE_CONST_MIX_INIT_MODPLUG
+    /* Initialize libmodplug */
+    rb_define_const(mMixer, "INIT_MODPLUG", UINT2NUM(MIX_INIT_MODPLUG));
+#endif
+#if HAVE_CONST_MIX_INIT_FLUIDSYNTH
     /* Initialize fluidsynth */
     rb_define_const(mMixer, "INIT_FLUIDSYNTH", UINT2NUM(MIX_INIT_FLUIDSYNTH));
+#endif
+#if HAVE_CONST_MIX_INIT_MID
+    /* Initialize mid */
+    rb_define_const(mMixer, "INIT_MID", UINT2NUM(MIX_INIT_MID));
+#endif
 
     /*  */
     /* Unsiged 8-bit sample format. Used by {Mixer.open} */
