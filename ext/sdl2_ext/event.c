@@ -37,6 +37,7 @@ static VALUE cEvTouchFinger;
 static VALUE cEvFingerDown;
 static VALUE cEvFingerUp;
 static VALUE cEvFingerMotion;
+static VALUE cEvMultigesture;
 /* static VALUE cEvUser; */
 /* static VALUE cEvDrop; */
 
@@ -1001,6 +1002,56 @@ static VALUE EvFingerMotion_inspect(VALUE self)
                       ev->tfinger.dx, ev->tfinger.dx);
 }
 
+
+/*
+ * Document-class: SDL2::Event::Multigesture
+ *
+ * This class represents multiple finger gesture events.
+ *
+ *
+ * @attribute touch_id
+ *   the touch device id
+ *   @return [Integer]
+ *
+ * @attribute d_theta
+ *   rotation of fingers
+ *   @return [Float]
+ *
+ * @attribute d_dist
+ *   amount of fingers pinched
+ *   @return [Float]
+ *
+ * @attribute x
+ *   the x-axis location of the touch event, normalized (0...1)
+ *   @return [Float]
+ *
+ * @attribute y
+ *   the y-axis location of the touch event, normalized (0...1)
+ *   @return [Float]
+ *
+ * @attribute num_fingers
+ *   number of fingers involved
+ *   @return [Integer]
+ */
+EVENT_ACCESSOR_INT(Multigesture, touch_id, mgesture.touchId);
+EVENT_ACCESSOR_DBL(Multigesture, x, mgesture.x);
+EVENT_ACCESSOR_DBL(Multigesture, y, mgesture.y);
+EVENT_ACCESSOR_DBL(Multigesture, d_theta, mgesture.dTheta);
+EVENT_ACCESSOR_DBL(Multigesture, d_dist, mgesture.dDist);
+EVENT_ACCESSOR_INT(Multigesture, num_fingers, mgesture.numFingers);
+/* @return [String] inspection string */
+static VALUE EvMultigesture_inspect(VALUE self)
+{
+    SDL_Event* ev; Data_Get_Struct(self, SDL_Event, ev);
+    return rb_sprintf("<%s: type=%u timestamp=%u"
+                      " touch_id=%d d_theta=%f d_dist=%f"
+                      " x=%f y=%f num_fingers=%d>",
+                      rb_obj_classname(self), ev->common.type, ev->common.timestamp,
+                      (int)ev->mgesture.touchId, ev->mgesture.dTheta, ev->mgesture.dDist,
+                      ev->mgesture.x, ev->mgesture.y, ev->mgesture.numFingers);
+}
+
+
 /*
  * Document-class: SDL2::Event::SysWM
  *
@@ -1050,6 +1101,7 @@ static void init_event_type_to_class(void)
     connect_event_class(SDL_FINGERDOWN, cEvFingerDown);
     connect_event_class(SDL_FINGERUP, cEvFingerUp);
     connect_event_class(SDL_FINGERMOTION, cEvFingerMotion);
+    connect_event_class(SDL_MULTIGESTURE, cEvMultigesture);
 }
 
 #define DEFINE_EVENT_READER(classname, classvar, name)                  \
@@ -1106,7 +1158,7 @@ void rubysdl2_init_event(void)
     cEvFingerUp = rb_define_class_under(cEvent, "FingerUp", cEvTouchFinger);
     cEvFingerDown = rb_define_class_under(cEvent, "FingerDown", cEvTouchFinger);
     cEvFingerMotion = rb_define_class_under(cEvent, "FingerMotion", cEvTouchFinger);
-    
+    cEvMultigesture = rb_define_class_under(cEvent, "Multigesture", cEvent);
     
     
     DEFINE_EVENT_READER(Event, cEvent, type);
@@ -1233,6 +1285,14 @@ void rubysdl2_init_event(void)
     DEFINE_EVENT_ACCESSOR(FingerMotion, cEvFingerMotion, dx); 
     DEFINE_EVENT_ACCESSOR(FingerMotion, cEvFingerMotion, dy);
     rb_define_method(cEvFingerMotion, "inspect", EvFingerMotion_inspect, 0);
+
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, touch_id);
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, d_theta);
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, d_dist);
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, x);
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, y);
+    DEFINE_EVENT_ACCESSOR(Multigesture, cEvMultigesture, num_fingers);
+    rb_define_method(cEvMultigesture, "inspect", EvMultigesture_inspect, 0);
     
     init_event_type_to_class();
 }
