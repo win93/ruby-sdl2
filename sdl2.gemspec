@@ -23,7 +23,6 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files`.split(/\n/)
   spec.test_files = []
   spec.extensions = ["ext/sdl2_ext/extconf.rb"]
-  spec.has_rdoc = false
 
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "yard", "~> 0.8"
