@@ -5,6 +5,9 @@
 #include <SDL_render.h>
 #include <SDL_messagebox.h>
 #include <SDL_endian.h>
+#ifdef HAVE_SDL2_GFXPRIMITIVES_H
+#include <SDL2_gfxPrimitives.h>
+#endif
 #include <ruby/encoding.h>
 #include <assert.h>
 
@@ -1730,6 +1733,307 @@ static VALUE Renderer_debug_info(VALUE self)
     return info;
 }
 
+// Draw anti-aliased line with alpha blending.
+static VALUE Renderer_draw_line_aa(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(aalineRGBA(Get_SDL_Renderer(self), NUM2INT(x1), NUM2INT(y1), NUM2INT(x2), NUM2INT(y2), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw a thick line with alpha blending.
+static VALUE Renderer_draw_line_thick(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2, VALUE width)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(thickLineRGBA(Get_SDL_Renderer(self), NUM2INT(x1), NUM2INT(y1), NUM2INT(x2), NUM2INT(y2), NUM2INT(width), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw trigon (triangle outline) with alpha blending.
+static VALUE Renderer_draw_triangle(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2, VALUE x3, VALUE y3)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(trigonRGBA(Get_SDL_Renderer(self), NUM2INT(x1), NUM2INT(y1), NUM2INT(x2), NUM2INT(y2), NUM2INT(x3), NUM2INT(y3), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw anti-aliased trigon (triangle outline) with alpha blending.
+static VALUE Renderer_draw_triangle_aa(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2, VALUE x3, VALUE y3)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(aatrigonRGBA(Get_SDL_Renderer(self), NUM2INT(x1), NUM2INT(y1), NUM2INT(x2), NUM2INT(y2), NUM2INT(x3), NUM2INT(y3), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw filled trigon (triangle) with alpha blending.
+static VALUE Renderer_fill_triangle(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2, VALUE x3, VALUE y3)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(filledTrigonRGBA(Get_SDL_Renderer(self), NUM2INT(x1), NUM2INT(y1), NUM2INT(x2), NUM2INT(y2), NUM2INT(x3), NUM2INT(y3), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+typedef int (*polygon_gfxFunction)(SDL_Renderer *, const Sint16 *, const Sint16 *, int, Uint8, Uint8, Uint8, Uint8);
+struct draw_polygon_closure
+{
+    polygon_gfxFunction gfxFunction;
+    SDL_Renderer *renderer;
+    Sint16 *vx, *vy;
+    long point_count;
+    Uint8 r, g, b, a;
+    SDL_BlendMode blend_mode;
+};
+
+static VALUE draw_polygon_generic(VALUE argv)
+{
+    const struct draw_polygon_closure *closure = (const struct draw_polygon_closure *) argv;
+    HANDLE_ERROR(closure->gfxFunction(closure->renderer, closure->vx, closure->vy, closure->point_count,
+        closure->r, closure->g, closure->b, closure->a));
+    return Qnil;
+}
+
+static VALUE draw_polygon_generic_cleanup(VALUE argv)
+{
+    const struct draw_polygon_closure *closure = (const struct draw_polygon_closure *) argv;
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(closure->renderer, closure->blend_mode));
+    free(closure->vx);
+    free(closure->vy);
+    return Qnil;
+}
+
+static VALUE Renderer_draw_polygon_generic(VALUE self, VALUE vertices_x, VALUE vertices_y, polygon_gfxFunction polygon_gfxFunction)
+{
+    struct draw_polygon_closure closure;
+
+    Check_Type(vertices_x, T_ARRAY);
+    Check_Type(vertices_y, T_ARRAY);
+
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &closure.blend_mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self),
+        &closure.r, &closure.g, &closure.b, &closure.a));
+    closure.gfxFunction = polygon_gfxFunction;
+    closure.renderer = Get_SDL_Renderer(self);
+    closure.point_count = RARRAY_LEN(vertices_x);
+    if (RARRAY_LEN(vertices_y) == closure.point_count)
+        rb_raise(rb_eArgError, "Both arrays must be of same size");
+    closure.vx = ruby_xmalloc2(closure.point_count, sizeof(*closure.vx));
+    closure.vy = ruby_xmalloc2(closure.point_count, sizeof(*closure.vy));
+    for (long i = 0; i < closure.point_count; i++) {
+        closure.vx[i] = NUM2INT(rb_ary_entry(vertices_x, i));
+        closure.vy[i] = NUM2INT(rb_ary_entry(vertices_y, i));
+    }
+
+    return rb_ensure(draw_polygon_generic, (VALUE) &closure, draw_polygon_generic_cleanup, (VALUE) &closure);
+}
+
+// Draw polygon with the currently set color and blend mode.
+static VALUE Renderer_draw_polygon(VALUE self, VALUE vertices_x, VALUE vertices_y)
+{
+    return Renderer_draw_polygon_generic(self, vertices_x, vertices_y, polygonRGBA);
+}
+
+// Draw anti-aliased polygon with alpha blending.
+static VALUE Renderer_draw_polygon_aa(VALUE self, VALUE vertices_x, VALUE vertices_y)
+{
+    return Renderer_draw_polygon_generic(self, vertices_x, vertices_y, aapolygonRGBA);
+}
+
+// Draw filled polygon with alpha blending.
+static VALUE Renderer_fill_polygon(VALUE self, VALUE vertices_x, VALUE vertices_y)
+{
+    return Renderer_draw_polygon_generic(self, vertices_x, vertices_y, filledPolygonRGBA);
+}
+
+struct draw_polygon_textured_closure
+{
+    SDL_Renderer *renderer;
+    Sint16 *vx, *vy;
+    long point_count;
+    SDL_Surface *texture;
+    int texture_dx, texture_dy;
+};
+
+static VALUE draw_polygon_textured(VALUE argv)
+{
+    const struct draw_polygon_textured_closure *closure =
+        (const struct draw_polygon_textured_closure *) argv;
+    HANDLE_ERROR(texturedPolygon(closure->renderer, closure->vx, closure->vy, closure->point_count,
+        closure->texture, closure->texture_dx, closure->texture_dy));
+    return Qnil;
+}
+
+static VALUE draw_polygon_textured_cleanup(VALUE argv)
+{
+    const struct draw_polygon_textured_closure *closure =
+        (const struct draw_polygon_textured_closure *) argv;
+    free(closure->vx);
+    free(closure->vy);
+    return Qnil;
+}
+
+// Draws a polygon filled with the given texture.
+static VALUE Renderer_fill_polygon_textured(VALUE self, VALUE vertices_x, VALUE vertices_y, VALUE surface, VALUE surface_dx, VALUE surface_dy)
+{
+    struct draw_polygon_textured_closure closure;
+
+    Check_Type(vertices_x, T_ARRAY);
+    Check_Type(vertices_y, T_ARRAY);
+
+    closure.renderer = Get_SDL_Renderer(self);
+    closure.texture = Get_SDL_Surface(surface);
+    closure.texture_dx = NUM2INT(surface_dx);
+    closure.texture_dy = NUM2INT(surface_dy);
+
+    closure.point_count = RARRAY_LEN(vertices_x);
+    if (RARRAY_LEN(vertices_y) == closure.point_count)
+        rb_raise(rb_eArgError, "Both arrays must be of same size");
+    closure.vx = ruby_xmalloc2(closure.point_count, sizeof(*closure.vx));
+    closure.vy = ruby_xmalloc2(closure.point_count, sizeof(*closure.vy));
+    for (long i = 0; i < closure.point_count; i++) {
+        closure.vx[i] = NUM2INT(rb_ary_entry(vertices_x, i));
+        closure.vy[i] = NUM2INT(rb_ary_entry(vertices_y, i));
+    }
+
+    return rb_ensure(draw_polygon_textured, (VALUE) &closure, draw_polygon_textured_cleanup, (VALUE) &closure);
+}
+
+// Arc with blending.
+static VALUE Renderer_draw_arc(VALUE self, VALUE x, VALUE y, VALUE rad, VALUE start, VALUE end)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(arcRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rad), NUM2INT(start), NUM2INT(end), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw ellipse with blending.
+static VALUE Renderer_draw_ellipse(VALUE self, VALUE x, VALUE y, VALUE rx, VALUE ry)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(ellipseRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rx), NUM2INT(ry), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw anti-aliased ellipse with blending.
+static VALUE Renderer_draw_ellipse_aa(VALUE self, VALUE x, VALUE y, VALUE rx, VALUE ry)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(aaellipseRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rx), NUM2INT(ry), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw filled ellipse with blending.
+static VALUE Renderer_fill_ellipse(VALUE self, VALUE x, VALUE y, VALUE rx, VALUE ry)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(filledEllipseRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rx), NUM2INT(ry), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw pie (outline) with alpha blending.
+static VALUE Renderer_draw_pie(VALUE self, VALUE x, VALUE y, VALUE rad, VALUE start, VALUE end)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(pieRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rad), NUM2INT(start), NUM2INT(end), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw filled pie with alpha blending.
+static VALUE Renderer_fill_pie(VALUE self, VALUE x, VALUE y, VALUE rad, VALUE start, VALUE end)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(filledPieRGBA(Get_SDL_Renderer(self), NUM2INT(x), NUM2INT(y), NUM2INT(rad), NUM2INT(start), NUM2INT(end), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+    return Qnil;
+}
+
+// Draw rounded-corner rectangle with blending.
+static VALUE Renderer_draw_rounded_rectangle(VALUE self, VALUE x, VALUE y, VALUE w, VALUE h, VALUE rad)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(roundedRectangleRGBA(Get_SDL_Renderer(self),
+        NUM2INT(x), NUM2INT(y),
+        NUM2INT(x) + NUM2INT(w), NUM2INT(y) + NUM2INT(h),
+        NUM2INT(rad), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw rounded-corner box (filled rectangle) with blending.
+static VALUE Renderer_fill_rounded_rectangle(VALUE self, VALUE x, VALUE y, VALUE w, VALUE h, VALUE rad)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(roundedBoxRGBA(Get_SDL_Renderer(self),
+        NUM2INT(x), NUM2INT(y),
+        NUM2INT(x) + NUM2INT(w), NUM2INT(y) + NUM2INT(h),
+        NUM2INT(rad), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
+// Draw a cubic bezier curve with alpha blending.
+static VALUE Renderer_draw_quad_bezier(VALUE self, VALUE x1, VALUE y1, VALUE x2, VALUE y2, VALUE x3, VALUE y3, VALUE x4, VALUE y4, VALUE resolution)
+{
+    SDL_BlendMode mode;
+    Uint8 r, g, b, a;
+    Sint16 vx[] = { NUM2INT(x1), NUM2INT(x2), NUM2INT(x3), NUM2INT(x4) };
+    Sint16 vy[] = { NUM2INT(y1), NUM2INT(y2), NUM2INT(y3), NUM2INT(y4) };
+    HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
+    HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
+    HANDLE_ERROR(bezierRGBA(Get_SDL_Renderer(self), vx, vy, 4, NUM2INT(resolution), r, g, b, a));
+    HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
+    return Qnil;
+}
+
 /*
  * Document-class: SDL2::Renderer::Info
  *
@@ -2998,6 +3302,27 @@ void rubysdl2_init_video(void)
     rb_define_method(cRenderer, "reset_render_target", Renderer_reset_render_target, 0);
     
     rb_define_method(cRenderer, "info", Renderer_info, 0);
+
+#ifdef HAVE_SDL2_GFXPRIMITIVES_H
+    rb_define_method(cRenderer, "draw_line_aa", Renderer_draw_line_aa, 4);
+    rb_define_method(cRenderer, "draw_line_thick", Renderer_draw_line_thick, 5);
+    rb_define_method(cRenderer, "draw_triangle", Renderer_draw_triangle, 6);
+    rb_define_method(cRenderer, "draw_triangle_aa", Renderer_draw_triangle_aa, 6);
+    rb_define_method(cRenderer, "fill_triangle", Renderer_fill_triangle, 6);
+    rb_define_method(cRenderer, "draw_polygon", Renderer_draw_polygon, 2);
+    rb_define_method(cRenderer, "draw_polygon_aa", Renderer_draw_polygon_aa, 2);
+    rb_define_method(cRenderer, "fill_polygon", Renderer_fill_polygon, 2);
+    rb_define_method(cRenderer, "fill_polygon_textured", Renderer_fill_polygon_textured, 5);
+    rb_define_method(cRenderer, "draw_arc", Renderer_draw_arc, 5);
+    rb_define_method(cRenderer, "draw_ellipse", Renderer_draw_ellipse, 4);
+    rb_define_method(cRenderer, "draw_ellipse_aa", Renderer_draw_ellipse_aa, 4);
+    rb_define_method(cRenderer, "fill_ellipse", Renderer_fill_ellipse, 4);
+    rb_define_method(cRenderer, "draw_pie", Renderer_draw_pie, 5);
+    rb_define_method(cRenderer, "fill_pie", Renderer_fill_pie, 5);
+    rb_define_method(cRenderer, "draw_rounded_rectangle", Renderer_draw_rounded_rectangle, 5);
+    rb_define_method(cRenderer, "fill_rounded_rectangle", Renderer_fill_rounded_rectangle, 5);
+    rb_define_method(cRenderer, "draw_quad_bezier", Renderer_draw_quad_bezier, 9);
+#endif
 
     mRendererFlags = rb_define_module_under(cRenderer, "Flags");
     

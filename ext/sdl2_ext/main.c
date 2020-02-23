@@ -12,6 +12,9 @@
 #ifdef HAVE_SDL_TTF_H
 #include <SDL_ttf.h>
 #endif
+#ifdef HAVE_SDL2_GFXPRIMITIVES_H
+#include <SDL2_gfxPrimitives.h>
+#endif
 #include <stdarg.h>
 #include <ruby/encoding.h>
 
@@ -219,7 +222,17 @@ void Init_sdl2_ext(void)
         rb_define_const(mSDL2, "LIBSDL_MIXER_VERSION_NUMBER", SDL_version_to_Array(version));
     }
 #endif
-    
+#ifdef HAVE_SDL2_GFXPRIMITIVES_H
+    rb_define_const(mSDL2, "LIBSDL2_GFX_VERSION", rb_sprintf("%d.%d.%d",
+        SDL2_GFXPRIMITIVES_MAJOR,
+        SDL2_GFXPRIMITIVES_MINOR,
+        SDL2_GFXPRIMITIVES_MICRO));
+    rb_define_const(mSDL2, "LIBSDL2_GFX_VERSION_NUMBER", rb_ary_new3(3,
+        INT2FIX(SDL2_GFXPRIMITIVES_MAJOR),
+        INT2FIX(SDL2_GFXPRIMITIVES_MINOR),
+        INT2FIX(SDL2_GFXPRIMITIVES_MICRO)));
+#endif
+
     eSDL2Error = rb_define_class_under(mSDL2, "Error", rb_eStandardError);
     rb_define_attr(eSDL2Error, "error_code", 1, 0);
 
