@@ -8363,7 +8363,7 @@ msgstr ""
 
 # @overload
 #: ../../video.c:1112 ../../video.c:2486 ../../video.c:2630
-msgid "tag|overload|initialze"
+msgid "tag|overload|initialize"
 msgstr ""
 
 # @param [SDL2::PixelFormat, Integer] format

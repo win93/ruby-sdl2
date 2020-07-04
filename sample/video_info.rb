@@ -62,4 +62,3 @@ SDL2::ScreenSaver.disable
 p SDL2::ScreenSaver.enabled?
 
 renderer.present
-
