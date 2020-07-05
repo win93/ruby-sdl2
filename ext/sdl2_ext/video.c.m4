@@ -1990,6 +1990,8 @@ static VALUE Renderer_fill_pie(VALUE self, VALUE x, VALUE y, VALUE rad, VALUE st
     return Qnil;
 }
 
+int internal_roundedRectangleRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+
 // Draw rounded-corner rectangle with blending.
 static VALUE Renderer_draw_rounded_rect(VALUE self, VALUE x, VALUE y, VALUE w, VALUE h, VALUE rad)
 {
@@ -1997,13 +1999,88 @@ static VALUE Renderer_draw_rounded_rect(VALUE self, VALUE x, VALUE y, VALUE w, V
     Uint8 r, g, b, a;
     HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
     HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
-    HANDLE_ERROR(roundedRectangleRGBA(Get_SDL_Renderer(self),
+    HANDLE_ERROR(internal_roundedRectangleRGBA(Get_SDL_Renderer(self),
         NUM2INT(x), NUM2INT(y),
         NUM2INT(x) + NUM2INT(w), NUM2INT(y) + NUM2INT(h),
         NUM2INT(rad), r, g, b, a));
     HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
     return Qnil;
 }
+
+// From: https://github.com/rtrussell/BBCSDL/blob/033203c/src/SDL2_gfxPrimitives.c
+// With modifications so that the draw domain is x:[x1, x2) and y:[y1,y2)
+// and fixup other off by one errors.
+int internal_roundedRectangleRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+	int result = 0;
+	Sint16 w, h;
+	Sint16 xx1, xx2;
+	Sint16 yy1, yy2;
+
+	if (renderer == NULL)
+		return -1;
+
+	if (rad < 0) // Check radius for valid range
+		return -1;
+
+	if (rad <= 1) //Special case - no rounding
+		return rectangleRGBA(renderer, x1, y1, x2, y2, r, g, b, a);
+
+	// Test for special cases of straight lines or single point
+	if (x1 == x2) {
+		if (y1 == y2)
+			return (pixelRGBA(renderer, x1, y1, r, g, b, a));
+		else
+			return (vlineRGBA(renderer, x1, y1, y2, r, g, b, a));
+	} else if (y1 == y2)
+        return (hlineRGBA(renderer, x1, x2, y1, r, g, b, a));
+
+	// Swap x1, x2 and/or y1, y2 if required
+	if (x1 > x2) {
+		Sint16 tmp = x1;
+		x1 = x2;
+		x2 = tmp;
+	}
+	if (y1 > y2) {
+		Sint16 tmp = y1;
+		y1 = y2;
+		y2 = tmp;
+	}
+
+	//Calculate width & height
+	w = x2 - x1;
+	h = y2 - y1;
+
+	//Maybe adjust radius
+	if ((rad * 2) > w)
+		rad = w / 2;
+	if ((rad * 2) > h)
+		rad = h / 2;
+
+	// Draw corners
+	xx1 = x1 + rad;
+	xx2 = x2 - rad;
+	yy1 = y1 + rad;
+	yy2 = y2 - rad;
+	result |= arcRGBA(renderer, xx1, yy1, rad, 180, 270, r, g, b, a);
+	result |= arcRGBA(renderer, xx2 - 1, yy1, rad, 270, 360, r, g, b, a);
+	result |= arcRGBA(renderer, xx1, yy2 - 1, rad,  90, 180, r, g, b, a);
+	result |= arcRGBA(renderer, xx2 - 1, yy2 - 1, rad,   0,  90, r, g, b, a);
+
+	// Draw lines
+	if (xx1 <= xx2) {
+		result |= hlineRGBA(renderer, xx1, xx2, y1, r, g, b, a);
+		result |= hlineRGBA(renderer, xx1, xx2, y2 - 1, r, g, b, a);
+	}
+	if (yy1 <= yy2) {
+		result |= vlineRGBA(renderer, x1, yy1, yy2, r, g, b, a);
+		result |= vlineRGBA(renderer, x2 - 1, yy1, yy2, r, g, b, a);
+	}
+
+	return result;
+}
+
+int internal_roundedBoxRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint16 x2,
+	Sint16 y2, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 // Draw rounded-corner box (filled rectangle) with blending.
 static VALUE Renderer_fill_rounded_rect(VALUE self, VALUE x, VALUE y, VALUE w, VALUE h, VALUE rad)
@@ -2012,12 +2089,109 @@ static VALUE Renderer_fill_rounded_rect(VALUE self, VALUE x, VALUE y, VALUE w, V
     Uint8 r, g, b, a;
     HANDLE_ERROR(SDL_GetRenderDrawBlendMode(Get_SDL_Renderer(self), &mode));
     HANDLE_ERROR(SDL_GetRenderDrawColor(Get_SDL_Renderer(self), &r, &g, &b, &a));
-    HANDLE_ERROR(roundedBoxRGBA(Get_SDL_Renderer(self),
+    HANDLE_ERROR(internal_roundedBoxRGBA(Get_SDL_Renderer(self),
         NUM2INT(x), NUM2INT(y),
         NUM2INT(x) + NUM2INT(w), NUM2INT(y) + NUM2INT(h),
         NUM2INT(rad), r, g, b, a));
     HANDLE_ERROR(SDL_SetRenderDrawBlendMode(Get_SDL_Renderer(self), mode));
     return Qnil;
+}
+
+// From: https://github.com/rtrussell/BBCSDL/blob/033203c/src/SDL2_gfxPrimitives.c
+// Threw out old code that actually does round corners in favor of a midpoint circle algorithm
+// From: https://rosettacode.org/wiki/Bitmap/Midpoint_circle_algorithm#C
+int internal_roundedBoxRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint16 x2,
+	Sint16 y2, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	int result = 0;
+	Sint16 w, h;
+    Sint16 cx1, cy1, cx2, cy2;
+
+	if (renderer == NULL)
+		return -1;
+
+	//Check radius for valid range
+	if (rad < 0)
+		return -1;
+
+	// Special case - no round corner at all
+	if (rad <= 1)
+		return boxRGBA(renderer, x1, y1, x2, y2, r, g, b, a);
+
+	// Test for special cases of straight lines or single point
+	if (x1 == x2) {
+		if (y1 == y2)
+			return (pixelRGBA(renderer, x1, y1, r, g, b, a));
+		else
+			return (vlineRGBA(renderer, x1, y1, y2, r, g, b, a));
+	} else if (y1 == y2)
+        return (hlineRGBA(renderer, x1, x2, y1, r, g, b, a));
+
+	// Swap x1, x2 and/or y1, y2 if required
+	if (x1 > x2) {
+		Sint16 tmp = x1;
+		x1 = x2;
+		x2 = tmp;
+	}
+	if (y1 > y2) {
+		Sint16 tmp = y1;
+		y1 = y2;
+		y2 = tmp;
+	}
+
+	// Calculate width & height
+	w = x2 - x1;
+	h = y2 - y1;
+
+	// Maybe adjust radius
+	if (rad + rad > w)
+		rad = w / 2;
+	if (rad + rad > h)
+		rad = h / 2;
+
+    //Calculate the four centers
+    cx1 = x1 + rad;
+    cy1 = y1 + rad;
+    cx2 = x2 - rad;
+    cy2 = y2 - rad;
+
+	// Draw corners and north/south wedge
+	// Theory: two calls through the midpoint circle algorithm will gives bounds
+	// for a drawn horizontal line. We eagerly draw over ourselves a bit so this
+	// can be improved performance wise.
+    {
+        int f = 1 - rad;
+        int ddF_x = 0;
+        int ddF_y = -2 * rad;
+        int x = 0;
+        int y = rad;
+
+        while(x < y) {
+            if(f >= 0) {
+                y--;
+                ddF_y += 2;
+                f += ddF_y;
+            }
+            x++;
+            ddF_x += 2;
+            f += ddF_x + 1;
+            // outline is (x0 +/- x, y0 +/- y) and (x0 +/- y, y0 +/- x)
+            // 8 octants in total, draw between two each line, therefore 4 calls
+            result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy1 - y, r, g, b, a);
+            result |= hlineRGBA(renderer, cx1 - y, cx2 + y, cy1 - x, r, g, b, a);
+            result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy2 + y - 1, r, g, b, a);
+            result |= hlineRGBA(renderer, cx1 - y, cx2 + y, cy2 + x - 1, r, g, b, a);
+        }
+    }
+
+
+	// east/west and center wedge
+	if (x2 - x1 - rad - rad > 0 && x2 - x1 - rad - rad > 0) { //TODO: check math
+        struct SDL_Rect rect = {x1, y1 + rad, x2 - x1, y2 - y1 - rad - rad};
+		result |= SDL_RenderFillRect(renderer, &rect);
+    }
+
+	return result;
 }
 
 // Draw a cubic bezier curve with alpha blending.
