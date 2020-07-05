@@ -6,15 +6,15 @@
 <title>
   Class: SDL2::Event::JoyDevice
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Event::JoyDevice";
   relpath = '../../';
 </script>
@@ -96,8 +96,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>event.c<span class="defines">,<br />
-  event.c</span>
+    <dd>ext/sdl2_ext/event.c<span class="defines">,<br />
+  ext/sdl2_ext/event.c</span>
 </dd>
   </dl>
   
@@ -105,9 +105,11 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This class represents joystick device events
-(<span class='object_link'><a href="JoyDeviceAdded.html" title="SDL2::Event::JoyDeviceAdded (class)">joystick connected events</a></span> and
- <span class='object_link'><a href="JoyDeviceRemoved.html" title="SDL2::Event::JoyDeviceRemoved (class)">joystick disconnected events</a></span>).</p>
+    
+<p>This class represents joystick device events (<span class='object_link'><a href="JoyDeviceAdded.html" title="SDL2::Event::JoyDeviceAdded (class)">joystick connected events</a></span> and</p>
+
+<pre class="code ruby"><code class="ruby">{SDL2::Event::JoyDeviceRemoved joystick disconnected events}).
+</code></pre>
 
 
   </div>
@@ -156,7 +158,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Inspection string.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspection string.</p>
 </div></span>
   
 </li>
@@ -193,7 +196,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns inspection string</p>
+    
+<p>Returns inspection string.</p>
 
 
   </div>
@@ -211,7 +215,8 @@
       
       
         &mdash;
-        <div class='inline'><p>inspection string</p>
+        <div class='inline'>
+<p>inspection string</p>
 </div>
       
     </li>
@@ -224,16 +229,16 @@
       <pre class="lines">
 
 
-776
 777
 778
 779
 780
 781
-782</pre>
+782
+783</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'event.c', line 776</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/event.c', line 777</span>
 
 static VALUE EvJoyDevice_inspect(VALUE self)
 {
@@ -252,9 +257,9 @@ static VALUE EvJoyDevice_inspect(VALUE self)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:19 2018 by
+  Generated on Sun Jul  5 05:02:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

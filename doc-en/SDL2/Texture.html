@@ -6,15 +6,15 @@
 <title>
   Class: SDL2::Texture
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Texture";
   relpath = '../';
 </script>
@@ -94,8 +94,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>video.c<span class="defines">,<br />
-  video.c</span>
+    <dd>ext/sdl2_ext/video.c<span class="defines">,<br />
+  ext/sdl2_ext/video.c</span>
 </dd>
   </dl>
   
@@ -103,7 +103,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This class represents the texture associated with a renderer.</p>
+    
+<p>This class represents the texture associated with a renderer.</p>
 
 
   </div>
@@ -112,13 +113,19 @@
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="ACCESS_STATIC-constant" class="">ACCESS_STATIC =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="ACCESS_STATIC-constant" class="">ACCESS_STATIC =
+          <div class="docstring">
   <div class="discussion">
-    <p>texture access pattern - changes rarely, not lockable</p>
+    
+<p>texture access pattern - changes rarely, not lockable</p>
 
 
   </div>
@@ -127,13 +134,14 @@
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_STATIC</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="ACCESS_STREAMING-constant" class="">ACCESS_STREAMING =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_STATIC</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ACCESS_STREAMING-constant" class="">ACCESS_STREAMING =
+          <div class="docstring">
   <div class="discussion">
-    <p>texture access pattern - changes frequently, lockable</p>
+    
+<p>texture access pattern - changes frequently, lockable</p>
 
 
   </div>
@@ -142,13 +150,14 @@
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_STREAMING</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="ACCESS_TARGET-constant" class="">ACCESS_TARGET =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_STREAMING</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ACCESS_TARGET-constant" class="">ACCESS_TARGET =
+          <div class="docstring">
   <div class="discussion">
-    <p>texture access pattern - can be used as a render target</p>
+    
+<p>texture access pattern - can be used as a render target</p>
 
 
   </div>
@@ -157,10 +166,11 @@
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_TARGET</span><span class='rparen'>)</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_TEXTUREACCESS_TARGET</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -193,7 +203,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the access pattern allowed for the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the access pattern allowed for the texture.</p>
 </div></span>
   
 </li>
@@ -216,7 +227,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get an additional alpha value used in render copy operations.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get an additional alpha value used in render copy operations.</p>
 </div></span>
   
 </li>
@@ -239,7 +251,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Set an additional alpha value used in render copy operations.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Set an additional alpha value used in render copy operations.</p>
 </div></span>
   
 </li>
@@ -262,7 +275,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the blending mode of the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the blending mode of the texture.</p>
 </div></span>
   
 </li>
@@ -285,7 +299,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Set the blending model of the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Set the blending model of the texture.</p>
 </div></span>
   
 </li>
@@ -294,7 +309,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#color_mod-instance_method" title="#color_mod (instance method)">#<strong>color_mod</strong>  &#x21d2; [Integer, Integer, Integer] </a>
+      <a href="#color_mod-instance_method" title="#color_mod (instance method)">#<strong>color_mod</strong>  &#x21d2; Integer </a>
     
 
     
@@ -308,7 +323,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get an additional color value used in render copy operations.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get an additional color value used in render copy operations.</p>
 </div></span>
   
 </li>
@@ -331,7 +347,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Set an additional color value used in render copy operations.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Set an additional color value used in render copy operations.</p>
 </div></span>
   
 </li>
@@ -354,7 +371,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>(GC) debugging information.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>(GC) debugging information.</p>
 </div></span>
   
 </li>
@@ -377,7 +395,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Destroy the texture and deallocate memory.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Destroy the texture and deallocate memory.</p>
 </div></span>
   
 </li>
@@ -400,7 +419,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Return true if the texture is <span class='object_link'><a href="#destroy-instance_method" title="SDL2::Texture#destroy (method)">destroyed</a></span>.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the texture is <span class='object_link'><a href="#destroy-instance_method" title="SDL2::Texture#destroy (method)">destroyed</a></span>.</p>
 </div></span>
   
 </li>
@@ -423,7 +443,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the format of the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the format of the texture.</p>
 </div></span>
   
 </li>
@@ -446,7 +467,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the height of the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the height of the texture.</p>
 </div></span>
   
 </li>
@@ -469,7 +491,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Inspection string.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspection string.</p>
 </div></span>
   
 </li>
@@ -492,7 +515,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the width of the texture.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the width of the texture.</p>
 </div></span>
   
 </li>
@@ -518,15 +542,17 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the access pattern allowed for the texture.</p>
+    
+<p>Get the access pattern allowed for the texture.</p>
 
 <p>The return value is one of the following:</p>
-
-<ul>
-  <li><span class='object_link'><a href="#ACCESS_STATIC-constant" title="SDL2::Texture::ACCESS_STATIC (constant)">ACCESS_STATIC</a></span></li>
-  <li><span class='object_link'><a href="#ACCESS_STREAMING-constant" title="SDL2::Texture::ACCESS_STREAMING (constant)">ACCESS_STREAMING</a></span></li>
-  <li><span class='object_link'><a href="#ACCESS_TARGET-constant" title="SDL2::Texture::ACCESS_TARGET (constant)">ACCESS_TARGET</a></span></li>
-</ul>
+<ul><li>
+<p><span class='object_link'><a href="#ACCESS_STATIC-constant" title="SDL2::Texture::ACCESS_STATIC (constant)">ACCESS_STATIC</a></span></p>
+</li><li>
+<p><span class='object_link'><a href="#ACCESS_STREAMING-constant" title="SDL2::Texture::ACCESS_STREAMING (constant)">ACCESS_STREAMING</a></span></p>
+</li><li>
+<p><span class='object_link'><a href="#ACCESS_TARGET-constant" title="SDL2::Texture::ACCESS_TARGET (constant)">ACCESS_TARGET</a></span></p>
+</li></ul>
 
 
   </div>
@@ -560,15 +586,15 @@
       <pre class="lines">
 
 
-1912
-1913
-1914
-1915
-1916
-1917</pre>
+2405
+2406
+2407
+2408
+2409
+2410</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1912</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2405</span>
 
 static VALUE Texture_access_pattern(VALUE self)
 {
@@ -592,7 +618,8 @@ static VALUE Texture_access_pattern(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get an additional alpha value used in render copy operations.</p>
+    
+<p>Get an additional alpha value used in render copy operations.</p>
 
 
   </div>
@@ -610,7 +637,8 @@ static VALUE Texture_access_pattern(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>the current alpha value</p>
+        <div class='inline'>
+<p>the current alpha value</p>
 </div>
       
     </li>
@@ -630,15 +658,15 @@ static VALUE Texture_access_pattern(VALUE self)
       <pre class="lines">
 
 
-1835
-1836
-1837
-1838
-1839
-1840</pre>
+2328
+2329
+2330
+2331
+2332
+2333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1835</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2328</span>
 
 static VALUE Texture_alpha_mod(VALUE self)
 {
@@ -664,14 +692,14 @@ static VALUE Texture_alpha_mod(VALUE self)
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
   <div class="docstring">
   <div class="discussion">
-    <p>Set an additional alpha value used in render copy operations.</p>
+    
+<p>Set an additional alpha value used in render copy operations.</p>
 
 
   </div>
@@ -690,8 +718,8 @@ static VALUE Texture_alpha_mod(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>the alpha value multiplied into copy operation,
-from 0 to 255</p>
+        <div class='inline'>
+<p>the alpha value multiplied into copy operation, from 0 to 255</p>
 </div>
       
     </li>
@@ -728,14 +756,14 @@ from 0 to 255</p>
       <pre class="lines">
 
 
-1852
-1853
-1854
-1855
-1856</pre>
+2345
+2346
+2347
+2348
+2349</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1852</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2345</span>
 
 static VALUE Texture_set_alpha_mod(VALUE self, VALUE alpha)
 {
@@ -758,7 +786,8 @@ static VALUE Texture_set_alpha_mod(VALUE self, VALUE alpha)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the blending mode of the texture.</p>
+    
+<p>Get the blending mode of the texture.</p>
 
 
   </div>
@@ -776,7 +805,8 @@ static VALUE Texture_set_alpha_mod(VALUE self, VALUE alpha)
       
       
         &mdash;
-        <div class='inline'><p>blend mode</p>
+        <div class='inline'>
+<p>blend mode</p>
 </div>
       
     </li>
@@ -796,15 +826,15 @@ static VALUE Texture_set_alpha_mod(VALUE self, VALUE alpha)
       <pre class="lines">
 
 
-1806
-1807
-1808
-1809
-1810
-1811</pre>
+2299
+2300
+2301
+2302
+2303
+2304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1806</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2299</span>
 
 static VALUE Texture_blend_mode(VALUE self)
 {
@@ -830,14 +860,14 @@ static VALUE Texture_blend_mode(VALUE self)
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
   <div class="docstring">
   <div class="discussion">
-    <p>Set the blending model of the texture.</p>
+    
+<p>Set the blending model of the texture.</p>
 
 
   </div>
@@ -856,7 +886,8 @@ static VALUE Texture_blend_mode(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>blending mode</p>
+        <div class='inline'>
+<p>blending mode</p>
 </div>
       
     </li>
@@ -893,14 +924,14 @@ static VALUE Texture_blend_mode(VALUE self)
       <pre class="lines">
 
 
-1822
-1823
-1824
-1825
-1826</pre>
+2315
+2316
+2317
+2318
+2319</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1822</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2315</span>
 
 static VALUE Texture_set_blend_mode(VALUE self, VALUE mode)
 {
@@ -915,7 +946,7 @@ static VALUE Texture_set_blend_mode(VALUE self, VALUE mode)
       <div class="method_details ">
   <h3 class="signature " id="color_mod-instance_method">
   
-    #<strong>color_mod</strong>  &#x21d2; <tt>[Integer, Integer, Integer]</tt> 
+    #<strong>color_mod</strong>  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -923,7 +954,8 @@ static VALUE Texture_set_blend_mode(VALUE self, VALUE mode)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get an additional color value used in render copy operations.</p>
+    
+<p>Get an additional color value used in render copy operations.</p>
 
 
   </div>
@@ -936,13 +968,13 @@ static VALUE Texture_set_blend_mode(VALUE self, VALUE mode)
     <li>
       
       
-        <span class='type'>(<tt>[Integer, Integer, Integer]</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>the current red, green, and blue
-color value.</p>
+        <div class='inline'>
+<p>the current red, green, and blue color value.</p>
 </div>
       
     </li>
@@ -955,15 +987,15 @@ color value.</p>
       <pre class="lines">
 
 
-1864
-1865
-1866
-1867
-1868
-1869</pre>
+2357
+2358
+2359
+2360
+2361
+2362</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1864</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2357</span>
 
 static VALUE Texture_color_mod(VALUE self)
 {
@@ -989,14 +1021,14 @@ static VALUE Texture_color_mod(VALUE self)
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
   <div class="docstring">
   <div class="discussion">
-    <p>Set an additional color value used in render copy operations.</p>
+    
+<p>Set an additional color value used in render copy operations.</p>
 
 
   </div>
@@ -1010,13 +1042,13 @@ static VALUE Texture_color_mod(VALUE self)
         <span class='name'>rgb</span>
       
       
-        <span class='type'>(<tt>[Integer, Integer, Integer]</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>the red, green, and blue
-color value multiplied into copy operations.</p>
+        <div class='inline'>
+<p>the red, green, and blue color value multiplied into copy operations.</p>
 </div>
       
     </li>
@@ -1046,20 +1078,20 @@ color value multiplied into copy operations.</p>
       <pre class="lines">
 
 
-1879
-1880
-1881
-1882
-1883
-1884
-1885</pre>
+2372
+2373
+2374
+2375
+2376
+2377
+2378</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1879</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2372</span>
 
 static VALUE Texture_set_color_mod(VALUE self, VALUE rgb)
 {
-    SDL_Color color = Array_to_SDL_Color(rgb);
+    SDL_Color color = Color_to_SDL_Color(rgb);
     HANDLE_ERROR(SDL_SetTextureColorMod(Get_SDL_Texture(self),
                                         color.r, color.g, color.b));
     return rgb;
@@ -1080,7 +1112,8 @@ static VALUE Texture_set_color_mod(VALUE self, VALUE rgb)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns (GC) debugging information</p>
+    
+<p>Returns (GC) debugging information.</p>
 
 
   </div>
@@ -1098,7 +1131,8 @@ static VALUE Texture_set_color_mod(VALUE self, VALUE rgb)
       
       
         &mdash;
-        <div class='inline'><p>(GC) debugging information</p>
+        <div class='inline'>
+<p>(GC) debugging information</p>
 </div>
       
     </li>
@@ -1111,17 +1145,17 @@ static VALUE Texture_set_color_mod(VALUE self, VALUE rgb)
       <pre class="lines">
 
 
-1963
-1964
-1965
-1966
-1967
-1968
-1969
-1970</pre>
+2456
+2457
+2458
+2459
+2460
+2461
+2462
+2463</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1963</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2456</span>
 
 static VALUE Texture_debug_info(VALUE self)
 {
@@ -1147,7 +1181,8 @@ static VALUE Texture_debug_info(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Destroy the texture and deallocate memory.</p>
+    
+<p>Destroy the texture and deallocate memory.</p>
 
 
   </div>
@@ -1168,14 +1203,14 @@ static VALUE Texture_debug_info(VALUE self)
       <pre class="lines">
 
 
-1793
-1794
-1795
-1796
-1797</pre>
+2286
+2287
+2288
+2289
+2290</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1793</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2286</span>
 
 static VALUE Texture_destroy(VALUE self)
 {
@@ -1198,7 +1233,8 @@ static VALUE Texture_destroy(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Return true if the texture is <span class='object_link'><a href="#destroy-instance_method" title="SDL2::Texture#destroy (method)">destroyed</a></span>.</p>
+    
+<p>Return true if the texture is <span class='object_link'><a href="#destroy-instance_method" title="SDL2::Texture#destroy (method)">destroyed</a></span>.</p>
 
 
   </div>
@@ -1233,7 +1269,8 @@ static VALUE Texture_destroy(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the format of the texture.</p>
+    
+<p>Get the format of the texture.</p>
 
 
   </div>
@@ -1260,15 +1297,15 @@ static VALUE Texture_destroy(VALUE self)
       <pre class="lines">
 
 
-1892
-1893
-1894
-1895
-1896
-1897</pre>
+2385
+2386
+2387
+2388
+2389
+2390</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1892</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2385</span>
 
 static VALUE Texture_format(VALUE self)
 {
@@ -1292,7 +1329,8 @@ static VALUE Texture_format(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the height of the texture.</p>
+    
+<p>Get the height of the texture.</p>
 
 
   </div>
@@ -1326,15 +1364,15 @@ static VALUE Texture_format(VALUE self)
       <pre class="lines">
 
 
-1940
-1941
-1942
-1943
-1944
-1945</pre>
+2433
+2434
+2435
+2436
+2437
+2438</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1940</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2433</span>
 
 static VALUE Texture_h(VALUE self)
 {
@@ -1358,7 +1396,8 @@ static VALUE Texture_h(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns inspection string</p>
+    
+<p>Returns inspection string.</p>
 
 
   </div>
@@ -1376,7 +1415,8 @@ static VALUE Texture_h(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>inspection string</p>
+        <div class='inline'>
+<p>inspection string</p>
 </div>
       
     </li>
@@ -1389,22 +1429,22 @@ static VALUE Texture_h(VALUE self)
       <pre class="lines">
 
 
-1948
-1949
-1950
-1951
-1952
-1953
-1954
-1955
-1956
-1957
-1958
-1959
-1960</pre>
+2441
+2442
+2443
+2444
+2445
+2446
+2447
+2448
+2449
+2450
+2451
+2452
+2453</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1948</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2441</span>
 
 static VALUE Texture_inspect(VALUE self)
 {
@@ -1435,7 +1475,8 @@ static VALUE Texture_inspect(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the width of the texture.</p>
+    
+<p>Get the width of the texture.</p>
 
 
   </div>
@@ -1469,15 +1510,15 @@ static VALUE Texture_inspect(VALUE self)
       <pre class="lines">
 
 
-1926
-1927
-1928
-1929
-1930
-1931</pre>
+2419
+2420
+2421
+2422
+2423
+2424</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 1926</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 2419</span>
 
 static VALUE Texture_w(VALUE self)
 {
@@ -1495,9 +1536,9 @@ static VALUE Texture_w(VALUE self)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:20 2018 by
+  Generated on Sun Jul  5 05:02:13 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

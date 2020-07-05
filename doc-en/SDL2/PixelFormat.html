@@ -6,15 +6,15 @@
 <title>
   Class: SDL2::PixelFormat
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::PixelFormat";
   relpath = '../';
 </script>
@@ -94,8 +94,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>video.c<span class="defines">,<br />
-  video.c</span>
+    <dd>ext/sdl2_ext/video.c<span class="defines">,<br />
+  ext/sdl2_ext/video.c</span>
 </dd>
   </dl>
   
@@ -103,10 +103,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This class represents pixel format of textures, windows, and displays.</p>
+    
+<p>This class represents pixel format of textures, windows, and displays.</p>
 
-<p>In C level, SDL use unsigned integers as pixel formats. This class
-wraps these integers. You can get the integers from <span class='object_link'><a href="#format-instance_method" title="SDL2::PixelFormat#format (method)">#format</a></span>.</p>
+<p>In C level, SDL use unsigned integers as pixel formats. This class wraps these integers. You can get the integers from <span class='object_link'><a href="#format-instance_method" title="SDL2::PixelFormat#format (method)">#format</a></span>.</p>
 
 
   </div>
@@ -125,13 +125,19 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 </p>
 
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="FORMATS-constant" class="">FORMATS =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="FORMATS-constant" class="">FORMATS =
+          <div class="docstring">
   <div class="discussion">
-    <p>Array of all available formats</p>
+    
+<p>Array of all available formats</p>
 
 
   </div>
@@ -140,13 +146,14 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
 </div>
-      </dt>
-      <dd><pre class="code">-</pre></dd>
-    
-      <dt id="UNKNOWN-constant" class="">UNKNOWN =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code">-</pre></dd>
+      
+        <dt id="UNKNOWN-constant" class="">UNKNOWN =
+          <div class="docstring">
   <div class="discussion">
-    <p>PixelFormat: Unused - reserved by SDL</p>
+    
+<p>PixelFormat: Unused - reserved by SDL</p>
 
 
   </div>
@@ -155,185 +162,186 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
 </div>
-      </dt>
-      <dd><pre class="code">-</pre></dd>
-    
-      <dt id="INDEX1LSB-constant" class="">INDEX1LSB =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="INDEX1MSB-constant" class="">INDEX1MSB =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="INDEX4LSB-constant" class="">INDEX4LSB =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="INDEX4MSB-constant" class="">INDEX4MSB =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="INDEX8-constant" class="">INDEX8 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB332-constant" class="">RGB332 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB444-constant" class="">RGB444 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB555-constant" class="">RGB555 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGR555-constant" class="">BGR555 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ARGB4444-constant" class="">ARGB4444 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGBA4444-constant" class="">RGBA4444 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ABGR4444-constant" class="">ABGR4444 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGRA4444-constant" class="">BGRA4444 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ARGB1555-constant" class="">ARGB1555 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGBA5551-constant" class="">RGBA5551 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ABGR1555-constant" class="">ABGR1555 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGRA5551-constant" class="">BGRA5551 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB565-constant" class="">RGB565 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGR565-constant" class="">BGR565 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB24-constant" class="">RGB24 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGR24-constant" class="">BGR24 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGB888-constant" class="">RGB888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGBX8888-constant" class="">RGBX8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGR888-constant" class="">BGR888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGRX8888-constant" class="">BGRX8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ARGB8888-constant" class="">ARGB8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="RGBA8888-constant" class="">RGBA8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ABGR8888-constant" class="">ABGR8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="BGRA8888-constant" class="">BGRA8888 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="ARGB2101010-constant" class="">ARGB2101010 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="YV12-constant" class="">YV12 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="IYUV-constant" class="">IYUV =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="YUY2-constant" class="">YUY2 =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="UYVY-constant" class="">UYVY =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-      <dt id="YVYU-constant" class="">YVYU =
-        
-      </dt>
-      <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code">-</pre></dd>
+      
+        <dt id="INDEX1LSB-constant" class="">INDEX1LSB =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="INDEX1MSB-constant" class="">INDEX1MSB =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="INDEX4LSB-constant" class="">INDEX4LSB =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="INDEX4MSB-constant" class="">INDEX4MSB =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="INDEX8-constant" class="">INDEX8 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB332-constant" class="">RGB332 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB444-constant" class="">RGB444 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB555-constant" class="">RGB555 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGR555-constant" class="">BGR555 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ARGB4444-constant" class="">ARGB4444 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGBA4444-constant" class="">RGBA4444 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ABGR4444-constant" class="">ABGR4444 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGRA4444-constant" class="">BGRA4444 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ARGB1555-constant" class="">ARGB1555 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGBA5551-constant" class="">RGBA5551 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ABGR1555-constant" class="">ABGR1555 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGRA5551-constant" class="">BGRA5551 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB565-constant" class="">RGB565 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGR565-constant" class="">BGR565 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB24-constant" class="">RGB24 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGR24-constant" class="">BGR24 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGB888-constant" class="">RGB888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGBX8888-constant" class="">RGBX8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGR888-constant" class="">BGR888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGRX8888-constant" class="">BGRX8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ARGB8888-constant" class="">ARGB8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="RGBA8888-constant" class="">RGBA8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ABGR8888-constant" class="">ABGR8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="BGRA8888-constant" class="">BGRA8888 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="ARGB2101010-constant" class="">ARGB2101010 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="YV12-constant" class="">YV12 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="IYUV-constant" class="">IYUV =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="YUY2-constant" class="">YUY2 =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="UYVY-constant" class="">UYVY =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+        <dt id="YVYU-constant" class="">YVYU =
+          
+        </dt>
+        <dd><pre class="code"><span class='id identifier rubyid_format'>format</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -363,7 +371,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>An integer representing the pixel format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>An integer representing the pixel format.</p>
 </div></span>
   
 </li>
@@ -399,7 +408,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Return true if two pixel format is the same format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if two pixel format is the same format.</p>
 </div></span>
   
 </li>
@@ -422,7 +432,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Return true if the pixel format have an alpha channel.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the pixel format have an alpha channel.</p>
 </div></span>
   
 </li>
@@ -447,7 +458,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the number of bits per pixel.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the number of bits per pixel.</p>
 </div></span>
   
 </li>
@@ -470,7 +482,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the number of bytes per pixel.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the number of bytes per pixel.</p>
 </div></span>
   
 </li>
@@ -493,7 +506,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Return true if the pixel format is not indexed, and not RGB(A), for example, the pixel format is YUV.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the pixel format is not indexed, and not RGB(A), for example, the pixel format is YUV.</p>
 </div></span>
   
 </li>
@@ -516,7 +530,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Return true if the pixel format have a palette.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Return true if the pixel format have a palette.</p>
 </div></span>
   
 </li>
@@ -525,7 +540,7 @@ wraps these integers. You can get the integers from <span class='object_link'><a
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialze (instance method)">#<strong>initialze</strong>(format)  &#x21d2; Object </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(format)  &#x21d2; Object </a>
     
 
     
@@ -541,7 +556,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Initialize pixel format from the given integer representing a fomrmat.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize pixel format from the given integer representing a fomrmat.</p>
 </div></span>
   
 </li>
@@ -564,7 +580,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Inspection string.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspection string.</p>
 </div></span>
   
 </li>
@@ -587,7 +604,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the channel bit pattern of the pixel format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the channel bit pattern of the pixel format.</p>
 </div></span>
   
 </li>
@@ -610,7 +628,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the human readable name of the pixel format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the human readable name of the pixel format.</p>
 </div></span>
   
 </li>
@@ -633,7 +652,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the ordering of channels or bits in the pixel format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the ordering of channels or bits in the pixel format.</p>
 </div></span>
   
 </li>
@@ -656,7 +676,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the type of the format.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the type of the format.</p>
 </div></span>
   
 </li>
@@ -671,7 +692,7 @@ wraps these integers. You can get the integers from <span class='object_link'><a
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialze</strong>(format)  &#x21d2; <tt>Object</tt> 
+    #<strong>initialize</strong>(format)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -681,14 +702,14 @@ wraps these integers. You can get the integers from <span class='object_link'><a
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
   <div class="docstring">
   <div class="discussion">
-    <p>Initialize pixel format from the given integer representing a fomrmat.</p>
+    
+<p>Initialize pixel format from the given integer representing a fomrmat.</p>
 
 
   </div>
@@ -707,7 +728,8 @@ wraps these integers. You can get the integers from <span class='object_link'><a
       
       
         &mdash;
-        <div class='inline'><p>an unsigned integer as a pixel formats</p>
+        <div class='inline'>
+<p>an unsigned integer as a pixel formats</p>
 </div>
       
     </li>
@@ -724,14 +746,14 @@ wraps these integers. You can get the integers from <span class='object_link'><a
       <pre class="lines">
 
 
-2650
-2651
-2652
-2653
-2654</pre>
+3193
+3194
+3195
+3196
+3197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2650</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3193</span>
 
 static VALUE PixelForamt_initialize(VALUE self, VALUE format)
 {
@@ -761,7 +783,8 @@ static VALUE PixelForamt_initialize(VALUE self, VALUE format)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>An integer representing the pixel format.</p>
+    
+<p>An integer representing the pixel format.</p>
 
 
   </div>
@@ -805,14 +828,14 @@ static VALUE PixelForamt_initialize(VALUE self, VALUE format)
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
   <div class="docstring">
   <div class="discussion">
-    <p>Return true if two pixel format is the same format.</p>
+    
+<p>Return true if two pixel format is the same format.</p>
 
 
   </div>
@@ -842,16 +865,16 @@ static VALUE PixelForamt_initialize(VALUE self, VALUE format)
       <pre class="lines">
 
 
-2751
-2752
-2753
-2754
-2755
-2756
-2757</pre>
+3294
+3295
+3296
+3297
+3298
+3299
+3300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2751</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3294</span>
 
 static VALUE PixelFormat_eq(VALUE self, VALUE other)
 {
@@ -876,7 +899,8 @@ static VALUE PixelFormat_eq(VALUE self, VALUE other)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Return true if the pixel format have an alpha channel.</p>
+    
+<p>Return true if the pixel format have an alpha channel.</p>
 
 
   </div>
@@ -903,13 +927,13 @@ static VALUE PixelFormat_eq(VALUE self, VALUE other)
       <pre class="lines">
 
 
-2731
-2732
-2733
-2734</pre>
+3274
+3275
+3276
+3277</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2731</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3274</span>
 
 static VALUE PixelFormat_alpha_p(VALUE self)
 {
@@ -935,7 +959,8 @@ static VALUE PixelFormat_alpha_p(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the number of bits per pixel.</p>
+    
+<p>Get the number of bits per pixel.</p>
 
 
   </div>
@@ -962,13 +987,13 @@ static VALUE PixelFormat_alpha_p(VALUE self)
       <pre class="lines">
 
 
-2705
-2706
-2707
-2708</pre>
+3248
+3249
+3250
+3251</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2705</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3248</span>
 
 static VALUE PixelFormat_bits_per_pixel(VALUE self)
 {
@@ -990,7 +1015,8 @@ static VALUE PixelFormat_bits_per_pixel(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the number of bytes per pixel.</p>
+    
+<p>Get the number of bytes per pixel.</p>
 
 
   </div>
@@ -1017,13 +1043,13 @@ static VALUE PixelFormat_bits_per_pixel(VALUE self)
       <pre class="lines">
 
 
-2715
-2716
-2717
-2718</pre>
+3258
+3259
+3260
+3261</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2715</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3258</span>
 
 static VALUE PixelFormat_bytes_per_pixel(VALUE self)
 {
@@ -1045,8 +1071,8 @@ static VALUE PixelFormat_bytes_per_pixel(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Return true if the pixel format is not indexed, and not RGB(A),
-for example, the pixel format is YUV.</p>
+    
+<p>Return true if the pixel format is not indexed, and not RGB(A), for example, the pixel format is YUV.</p>
 
 
   </div>
@@ -1073,13 +1099,13 @@ for example, the pixel format is YUV.</p>
       <pre class="lines">
 
 
-2740
-2741
-2742
-2743</pre>
+3283
+3284
+3285
+3286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2740</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3283</span>
 
 static VALUE PixelFormat_fourcc_p(VALUE self)
 {
@@ -1101,7 +1127,8 @@ static VALUE PixelFormat_fourcc_p(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Return true if the pixel format have a palette.</p>
+    
+<p>Return true if the pixel format have a palette.</p>
 
 
   </div>
@@ -1128,13 +1155,13 @@ static VALUE PixelFormat_fourcc_p(VALUE self)
       <pre class="lines">
 
 
-2723
-2724
-2725
-2726</pre>
+3266
+3267
+3268
+3269</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2723</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3266</span>
 
 static VALUE PixelFormat_indexed_p(VALUE self)
 {
@@ -1156,7 +1183,8 @@ static VALUE PixelFormat_indexed_p(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns inspection string</p>
+    
+<p>Returns inspection string.</p>
 
 
   </div>
@@ -1174,7 +1202,8 @@ static VALUE PixelFormat_indexed_p(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>inspection string</p>
+        <div class='inline'>
+<p>inspection string</p>
 </div>
       
     </li>
@@ -1187,22 +1216,22 @@ static VALUE PixelFormat_indexed_p(VALUE self)
       <pre class="lines">
 
 
-2760
-2761
-2762
-2763
-2764
-2765
-2766
-2767
-2768
-2769
-2770
-2771
-2772</pre>
+3303
+3304
+3305
+3306
+3307
+3308
+3309
+3310
+3311
+3312
+3313
+3314
+3315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2760</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3303</span>
 
 static VALUE PixelFormat_inspect(VALUE self)
 {
@@ -1233,7 +1262,8 @@ static VALUE PixelFormat_inspect(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the channel bit pattern of the pixel format.</p>
+    
+<p>Get the channel bit pattern of the pixel format.</p>
 
 
   </div>
@@ -1251,7 +1281,8 @@ static VALUE PixelFormat_inspect(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>One of the constants of <span class='object_link'><a href="PixelFormat/PackedLayout.html" title="SDL2::PixelFormat::PackedLayout (module)">PackedLayout</a></span> module.</p>
+        <div class='inline'>
+<p>One of the constants of <span class='object_link'><a href="PixelFormat/PackedLayout.html" title="SDL2::PixelFormat::PackedLayout (module)">PackedLayout</a></span> module.</p>
 </div>
       
     </li>
@@ -1264,13 +1295,13 @@ static VALUE PixelFormat_inspect(VALUE self)
       <pre class="lines">
 
 
-2695
-2696
-2697
-2698</pre>
+3238
+3239
+3240
+3241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2695</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3238</span>
 
 static VALUE PixelFormat_layout(VALUE self)
 {
@@ -1292,7 +1323,8 @@ static VALUE PixelFormat_layout(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the human readable name of the pixel format</p>
+    
+<p>Get the human readable name of the pixel format</p>
 
 
   </div>
@@ -1319,13 +1351,13 @@ static VALUE PixelFormat_layout(VALUE self)
       <pre class="lines">
 
 
-2675
-2676
-2677
-2678</pre>
+3218
+3219
+3220
+3221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2675</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3218</span>
 
 static VALUE PixelFormat_name(VALUE self)
 {
@@ -1347,7 +1379,8 @@ static VALUE PixelFormat_name(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the ordering of channels or bits in the pixel format.</p>
+    
+<p>Get the ordering of channels or bits in the pixel format.</p>
 
 
   </div>
@@ -1365,7 +1398,8 @@ static VALUE PixelFormat_name(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>One of the constants of <span class='object_link'><a href="PixelFormat/BitmapOrder.html" title="SDL2::PixelFormat::BitmapOrder (module)">BitmapOrder</a></span> module or <span class='object_link'><a href="PixelFormat/PackedOrder.html" title="SDL2::PixelFormat::PackedOrder (module)">PackedOrder</a></span> module.</p>
+        <div class='inline'>
+<p>One of the constants of <span class='object_link'><a href="PixelFormat/BitmapOrder.html" title="SDL2::PixelFormat::BitmapOrder (module)">BitmapOrder</a></span> module or <span class='object_link'><a href="PixelFormat/PackedOrder.html" title="SDL2::PixelFormat::PackedOrder (module)">PackedOrder</a></span> module.</p>
 </div>
       
     </li>
@@ -1378,13 +1412,13 @@ static VALUE PixelFormat_name(VALUE self)
       <pre class="lines">
 
 
-2685
-2686
-2687
-2688</pre>
+3228
+3229
+3230
+3231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2685</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3228</span>
 
 static VALUE PixelFormat_order(VALUE self)
 {
@@ -1406,7 +1440,8 @@ static VALUE PixelFormat_order(VALUE self)
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the type of the format.</p>
+    
+<p>Get the type of the format.</p>
 
 
   </div>
@@ -1424,7 +1459,8 @@ static VALUE PixelFormat_order(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>One of the constants of <span class='object_link'><a href="PixelFormat/Type.html" title="SDL2::PixelFormat::Type (module)">Type</a></span> module.</p>
+        <div class='inline'>
+<p>One of the constants of <span class='object_link'><a href="PixelFormat/Type.html" title="SDL2::PixelFormat::Type (module)">Type</a></span> module.</p>
 </div>
       
     </li>
@@ -1437,13 +1473,13 @@ static VALUE PixelFormat_order(VALUE self)
       <pre class="lines">
 
 
-2661
-2662
-2663
-2664</pre>
+3204
+3205
+3206
+3207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'video.c', line 2661</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/video.c', line 3204</span>
 
 static VALUE PixelFormat_type(VALUE self)
 {
@@ -1459,9 +1495,9 @@ static VALUE PixelFormat_type(VALUE self)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:21 2018 by
+  Generated on Sun Jul  5 05:02:13 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

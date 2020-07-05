@@ -6,15 +6,15 @@
 <title>
   Module: SDL2::Joystick::Hat
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Joystick::Hat";
   relpath = '../../';
 </script>
@@ -78,8 +78,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>joystick.c<span class="defines">,<br />
-  joystick.c</span>
+    <dd>ext/sdl2_ext/joystick.c<span class="defines">,<br />
+  ext/sdl2_ext/joystick.c</span>
 </dd>
   </dl>
   
@@ -87,10 +87,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This module provides constants of joysticks’s hat positions used by <span class='object_link'><a href="../Joystick.html" title="SDL2::Joystick (class)">SDL2::Joystick</a></span> class.
-The position of the hat is represented by OR’d bits of <span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span>, <span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span>, <span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>, and <span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>.
-This means the center position (<span class='object_link'><a href="#CENTERED-constant" title="SDL2::Joystick::Hat::CENTERED (constant)">CENTERED</a></span>) is represeted by 0 and
-the left up position <span class='object_link'><a href="#LEFTUP-constant" title="SDL2::Joystick::Hat::LEFTUP (constant)">LEFTUP</a></span> is represeted by (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span>|<span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>).</p>
+    
+<p>This module provides constants of joysticks&#39;s hat positions used by <span class='object_link'><a href="../Joystick.html" title="SDL2::Joystick (class)">SDL2::Joystick</a></span> class. The position of the hat is represented by OR&#39;d bits of <span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span>, <span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span>, <span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>, and <span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>. This means the center position (<span class='object_link'><a href="#CENTERED-constant" title="SDL2::Joystick::Hat::CENTERED (constant)">CENTERED</a></span>) is represeted by 0 and the left up position <span class='object_link'><a href="#LEFTUP-constant" title="SDL2::Joystick::Hat::LEFTUP (constant)">LEFTUP</a></span> is represeted by (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span>|<span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>).</p>
 
 
   </div>
@@ -99,13 +97,19 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="CENTERED-constant" class="">CENTERED =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="CENTERED-constant" class="">CENTERED =
+          <div class="docstring">
   <div class="discussion">
-    <p>Center position. Equal to 0.</p>
+    
+<p>Center position. Equal to 0.</p>
 
 
   </div>
@@ -114,13 +118,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_CENTERED</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="UP-constant" class="">UP =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_CENTERED</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="UP-constant" class="">UP =
+          <div class="docstring">
   <div class="discussion">
-    <p>Up position.</p>
+    
+<p>Up position.</p>
 
 
   </div>
@@ -129,13 +134,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_UP</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RIGHT-constant" class="">RIGHT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_UP</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RIGHT-constant" class="">RIGHT =
+          <div class="docstring">
   <div class="discussion">
-    <p>Right position.</p>
+    
+<p>Right position.</p>
 
 
   </div>
@@ -144,13 +150,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="DOWN-constant" class="">DOWN =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DOWN-constant" class="">DOWN =
+          <div class="docstring">
   <div class="discussion">
-    <p>Down position.</p>
+    
+<p>Down position.</p>
 
 
   </div>
@@ -159,13 +166,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_DOWN</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LEFT-constant" class="">LEFT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_DOWN</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LEFT-constant" class="">LEFT =
+          <div class="docstring">
   <div class="discussion">
-    <p>Left position.</p>
+    
+<p>Left position.</p>
 
 
   </div>
@@ -174,20 +182,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RIGHTUP-constant" class="">RIGHTUP =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RIGHTUP-constant" class="">RIGHTUP =
+          <div class="docstring">
   <div class="discussion">
-    <table>
-  <tbody>
-    <tr>
-      <td>Right Up position. Equal to (<span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span></td>
-      <td><span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>)</td>
-    </tr>
-  </tbody>
-</table>
+    
+<p>Right Up position. Equal to (<span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span> | <span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>)</p>
 
 
   </div>
@@ -196,20 +198,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHTUP</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RIGHTDOWN-constant" class="">RIGHTDOWN =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHTUP</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RIGHTDOWN-constant" class="">RIGHTDOWN =
+          <div class="docstring">
   <div class="discussion">
-    <table>
-  <tbody>
-    <tr>
-      <td>Right Down position. Equal to (<span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span></td>
-      <td><span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>)</td>
-    </tr>
-  </tbody>
-</table>
+    
+<p>Right Down position. Equal to (<span class='object_link'><a href="#RIGHT-constant" title="SDL2::Joystick::Hat::RIGHT (constant)">RIGHT</a></span> | <span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>)</p>
 
 
   </div>
@@ -218,20 +214,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHTDOWN</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LEFTUP-constant" class="">LEFTUP =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_RIGHTDOWN</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LEFTUP-constant" class="">LEFTUP =
+          <div class="docstring">
   <div class="discussion">
-    <table>
-  <tbody>
-    <tr>
-      <td>Left Up position. Equal to (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span></td>
-      <td><span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>)</td>
-    </tr>
-  </tbody>
-</table>
+    
+<p>Left Up position. Equal to (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span> | <span class='object_link'><a href="#UP-constant" title="SDL2::Joystick::Hat::UP (constant)">UP</a></span>)</p>
 
 
   </div>
@@ -240,20 +230,14 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFTUP</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LEFTDOWN-constant" class="">LEFTDOWN =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFTUP</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LEFTDOWN-constant" class="">LEFTDOWN =
+          <div class="docstring">
   <div class="discussion">
-    <table>
-  <tbody>
-    <tr>
-      <td>Left Down position. Equal to (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span></td>
-      <td><span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>)</td>
-    </tr>
-  </tbody>
-</table>
+    
+<p>Left Down position. Equal to (<span class='object_link'><a href="#LEFT-constant" title="SDL2::Joystick::Hat::LEFT (constant)">LEFT</a></span> | <span class='object_link'><a href="#DOWN-constant" title="SDL2::Joystick::Hat::DOWN (constant)">DOWN</a></span>)</p>
 
 
   </div>
@@ -262,10 +246,11 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFTDOWN</span><span class='rparen'>)</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_HAT_LEFTDOWN</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -278,9 +263,9 @@ the left up position <span class='object_link'><a href="#LEFTUP-constant" title=
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:15 2018 by
+  Generated on Sun Jul  5 05:02:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

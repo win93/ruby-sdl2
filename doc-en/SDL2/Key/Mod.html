@@ -6,15 +6,15 @@
 <title>
   Module: SDL2::Key::Mod
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Key::Mod";
   relpath = '../../';
 </script>
@@ -78,8 +78,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>key.c<span class="defines">,<br />
-  key.c</span>
+    <dd>ext/sdl2_ext/key.c<span class="defines">,<br />
+  ext/sdl2_ext/key.c</span>
 </dd>
   </dl>
   
@@ -87,8 +87,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This module has key modifier bitmask constants and
-some functions to handle key modifier states.</p>
+    
+<p>This module has key modifier bitmask constants and some functions to handle key modifier states.</p>
 
 
   </div>
@@ -97,13 +97,19 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="NONE-constant" class="">NONE =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="NONE-constant" class="">NONE =
+          <div class="docstring">
   <div class="discussion">
-    <p>0 (no modifier is applicable)</p>
+    
+<p>0 (no modifier is applicable)</p>
 
 
   </div>
@@ -112,13 +118,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_NONE</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LSHIFT-constant" class="">LSHIFT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_NONE</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LSHIFT-constant" class="">LSHIFT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left shift key</p>
+    
+<p>the modifier key bit mask for the left shift key</p>
 
 
   </div>
@@ -127,13 +134,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LSHIFT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RSHIFT-constant" class="">RSHIFT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LSHIFT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RSHIFT-constant" class="">RSHIFT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the right shift key</p>
+    
+<p>the modifier key bit mask for the right shift key</p>
 
 
   </div>
@@ -142,13 +150,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RSHIFT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LCTRL-constant" class="">LCTRL =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RSHIFT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LCTRL-constant" class="">LCTRL =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left control key</p>
+    
+<p>the modifier key bit mask for the left control key</p>
 
 
   </div>
@@ -157,13 +166,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LCTRL</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RCTRL-constant" class="">RCTRL =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LCTRL</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RCTRL-constant" class="">RCTRL =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the right control key</p>
+    
+<p>the modifier key bit mask for the right control key</p>
 
 
   </div>
@@ -172,13 +182,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RCTRL</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LALT-constant" class="">LALT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RCTRL</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LALT-constant" class="">LALT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left alt key</p>
+    
+<p>the modifier key bit mask for the left alt key</p>
 
 
   </div>
@@ -187,13 +198,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LALT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RALT-constant" class="">RALT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LALT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RALT-constant" class="">RALT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the right alt key</p>
+    
+<p>the modifier key bit mask for the right alt key</p>
 
 
   </div>
@@ -202,13 +214,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RALT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="LGUI-constant" class="">LGUI =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RALT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LGUI-constant" class="">LGUI =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left GUI key (often the window key)</p>
+    
+<p>the modifier key bit mask for the left GUI key (often the window key)</p>
 
 
   </div>
@@ -217,13 +230,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LGUI</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RGUI-constant" class="">RGUI =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_LGUI</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RGUI-constant" class="">RGUI =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the right GUI key (often the window key)</p>
+    
+<p>the modifier key bit mask for the right GUI key (often the window key)</p>
 
 
   </div>
@@ -232,13 +246,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RGUI</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="NUM-constant" class="">NUM =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RGUI</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="NUM-constant" class="">NUM =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the numlock key</p>
+    
+<p>the modifier key bit mask for the numlock key</p>
 
 
   </div>
@@ -247,13 +262,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_NUM</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="CAPS-constant" class="">CAPS =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_NUM</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="CAPS-constant" class="">CAPS =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the capslock key</p>
+    
+<p>the modifier key bit mask for the capslock key</p>
 
 
   </div>
@@ -262,13 +278,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_CAPS</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="MODE-constant" class="">MODE =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_CAPS</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="MODE-constant" class="">MODE =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the mode key (AltGr)</p>
+    
+<p>the modifier key bit mask for the mode key (AltGr)</p>
 
 
   </div>
@@ -277,13 +294,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_MODE</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="CTRL-constant" class="">CTRL =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_MODE</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="CTRL-constant" class="">CTRL =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left and right control key</p>
+    
+<p>the modifier key bit mask for the left and right control key</p>
 
 
   </div>
@@ -292,13 +310,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_CTRL</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="SHIFT-constant" class="">SHIFT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_CTRL</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="SHIFT-constant" class="">SHIFT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left and right shift key</p>
+    
+<p>the modifier key bit mask for the left and right shift key</p>
 
 
   </div>
@@ -307,13 +326,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_SHIFT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="ALT-constant" class="">ALT =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_SHIFT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ALT-constant" class="">ALT =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left and right alt key</p>
+    
+<p>the modifier key bit mask for the left and right alt key</p>
 
 
   </div>
@@ -322,13 +342,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_ALT</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="GUI-constant" class="">GUI =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_ALT</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="GUI-constant" class="">GUI =
+          <div class="docstring">
   <div class="discussion">
-    <p>the modifier key bit mask for the left and right GUI key</p>
+    
+<p>the modifier key bit mask for the left and right GUI key</p>
 
 
   </div>
@@ -337,13 +358,14 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_GUI</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="RESERVED-constant" class="">RESERVED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_GUI</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="RESERVED-constant" class="">RESERVED =
+          <div class="docstring">
   <div class="discussion">
-    <p>reserved for future use</p>
+    
+<p>reserved for future use</p>
 
 
   </div>
@@ -352,10 +374,11 @@ some functions to handle key modifier states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RESERVED</span><span class='rparen'>)</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>INT2NUM</span><span class='lparen'>(</span><span class='const'>KMOD_RESERVED</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -388,7 +411,8 @@ some functions to handle key modifier states.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Get the current key modifier state.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the current key modifier state.</p>
 </div></span>
   
 </li>
@@ -411,7 +435,8 @@ some functions to handle key modifier states.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Set the current key modifier state.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Set the current key modifier state.</p>
 </div></span>
   
 </li>
@@ -437,10 +462,10 @@ some functions to handle key modifier states.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get the current key modifier state</p>
+    
+<p>Get the current key modifier state</p>
 
-<p>You can examine whether the modifier key is pressed
-using bitmask constants of <span class='object_link'><a href="" title="SDL2::Key::Mod (module)">SDL2::Key::Mod</a></span>.</p>
+<p>You can examine whether the modifier key is pressed using bitmask constants of <span class='object_link'><a href="" title="SDL2::Key::Mod (module)">SDL2::Key::Mod</a></span>.</p>
 
 
   </div>
@@ -458,7 +483,8 @@ using bitmask constants of <span class='object_link'><a href="" title="SDL2::Key
       
       
         &mdash;
-        <div class='inline'><p>key state</p>
+        <div class='inline'>
+<p>key state</p>
 </div>
       
     </li>
@@ -477,7 +503,7 @@ using bitmask constants of <span class='object_link'><a href="" title="SDL2::Key
 153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'key.c', line 150</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/key.c', line 150</span>
 
 static VALUE Mod_s_state(VALUE self)
 {
@@ -502,9 +528,11 @@ static VALUE Mod_s_state(VALUE self)
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'><p>This does not change the keyboard state, only the key modifier flags.</p>
+    <div class='inline'>
+<p>This does not change the keyboard state, only the key modifier flags.</p>
 </div>
   </div>
+
 
 <p>Set the current key modifier state</p>
 
@@ -516,7 +544,6 @@ static VALUE Mod_s_state(VALUE self)
   <div class="docstring">
   <div class="discussion">
     
-
 
   </div>
 </div>
@@ -534,7 +561,8 @@ static VALUE Mod_s_state(VALUE self)
       
       
         &mdash;
-        <div class='inline'><p>key modifier flags (bits)</p>
+        <div class='inline'>
+<p>key modifier flags (bits)</p>
 </div>
       
     </li>
@@ -578,7 +606,7 @@ static VALUE Mod_s_state(VALUE self)
 169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'key.c', line 165</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/key.c', line 165</span>
 
 static VALUE Mod_s_set_state(VALUE self, VALUE keymod)
 {
@@ -595,9 +623,9 @@ static VALUE Mod_s_set_state(VALUE self, VALUE keymod)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:17 2018 by
+  Generated on Sun Jul  5 05:02:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

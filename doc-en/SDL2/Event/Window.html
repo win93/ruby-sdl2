@@ -6,15 +6,15 @@
 <title>
   Class: SDL2::Event::Window
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Event::Window";
   relpath = '../../';
 </script>
@@ -96,8 +96,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>event.c<span class="defines">,<br />
-  event.c</span>
+    <dd>ext/sdl2_ext/event.c<span class="defines">,<br />
+  lib/sdl2/event.rb,<br /> ext/sdl2_ext/event.c</span>
 </dd>
   </dl>
   
@@ -105,8 +105,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This class represents window event. This type of event occurs when
-window state is changed.</p>
+    
+<p>This class represents window event. This type of event occurs when window state is changed.</p>
 
 
   </div>
@@ -141,7 +141,8 @@ window state is changed.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>event dependent data.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>event dependent data.</p>
 </div></span>
   
 </li>
@@ -167,7 +168,8 @@ window state is changed.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>event dependent data.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>event dependent data.</p>
 </div></span>
   
 </li>
@@ -193,7 +195,8 @@ window state is changed.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>event type, one of the following:.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>event type, one of the following:.</p>
 </div></span>
   
 </li>
@@ -219,7 +222,8 @@ window state is changed.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>the associate window id.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>the associate window id.</p>
 </div></span>
   
 </li>
@@ -260,7 +264,8 @@ window state is changed.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Inspection string.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspection string.</p>
 </div></span>
   
 </li>
@@ -297,7 +302,8 @@ window state is changed.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>event dependent data</p>
+    
+<p>event dependent data</p>
 
 
   </div>
@@ -334,7 +340,8 @@ window state is changed.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>event dependent data</p>
+    
+<p>event dependent data</p>
 
 
   </div>
@@ -371,32 +378,52 @@ window state is changed.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>event type, one of the following:</p>
+    
+<p>event type, one of the following:</p>
+<ul><li>
+<p>SDL2::Event::Window::NONE - (never used)</p>
+</li><li>
+<p>SDL2::Event::Window::SHOWN - window has been shown</p>
+</li><li>
+<p>SDL2::Event::Window::HIDDEN - window has been hidden</p>
+</li><li>
+<p>SDL2::Event::Window::EXPOSED - window has been exposed and should be redrawn</p>
+</li><li>
+<p>SDL2::Event::Window::MOVED - window has been moved to data1, data2</p>
+</li><li>
+<p>SDL2::Event::Window::RESIZED - window has been resized to data1xdata2;</p>
 
-<ul>
-  <li>SDL2::Event::Window::NONE - (never used)</li>
-  <li>SDL2::Event::Window::SHOWN - window has been shown</li>
-  <li>SDL2::Event::Window::HIDDEN - window has been hidden</li>
-  <li>SDL2::Event::Window::EXPOSED - window has been exposed and should be redrawn</li>
-  <li>SDL2::Event::Window::MOVED - window has been moved to data1, data2</li>
-  <li>SDL2::Event::Window::RESIZED - window has been resized to data1xdata2;
-  this is event is always preceded by SIZE_CHANGED</li>
-  <li>SDL2::Event::Window::SIZE_CHANGED -
-  window size has changed, either as a result of an API call or through
-  the system or user changing the window size;
-  this event is followed by
-  RESIZED if the size was changed by an external event,
-  i.e. the user or the window manager</li>
-  <li>SDL2::Event::Window::MINIMIZED - window has been minimized</li>
-  <li>SDL2::Event::Window::MAXIMIZED - window has been maximized</li>
-  <li>SDL2::Event::Window::RESTORED - window has been restored to normal size and position</li>
-  <li>SDL2::Event::Window::ENTER - window has gained mouse focus</li>
-  <li>SDL2::Event::Window::LEAVE - window has lost mouse focus</li>
-  <li>SDL2::Event::Window::FOCUS_GAINED - window has gained keyboard focus</li>
-  <li>SDL2::Event::Window::FOCUS_LOST -window has lost keyboard focus</li>
-  <li>SDL2::Event::Window::CLOSE -
-  the window manager requests that the window be closed</li>
-</ul>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_this'>this</span> <span class='id identifier rubyid_is'>is</span> <span class='id identifier rubyid_event'>event</span> <span class='id identifier rubyid_is'>is</span> <span class='id identifier rubyid_always'>always</span> <span class='id identifier rubyid_preceded'>preceded</span> <span class='id identifier rubyid_by'>by</span> <span class='const'>SIZE_CHANGED</span>
+</code></pre>
+</li><li>
+<p>SDL2::Event::Window::SIZE_CHANGED -</p>
+
+<pre class="code ruby"><code class="ruby">window size has changed, either as a result of an API call or through
+the system or user changing the window size;
+this event is followed by
+RESIZED if the size was changed by an external event,
+i.e. the user or the window manager
+</code></pre>
+</li><li>
+<p>SDL2::Event::Window::MINIMIZED - window has been minimized</p>
+</li><li>
+<p>SDL2::Event::Window::MAXIMIZED - window has been maximized</p>
+</li><li>
+<p>SDL2::Event::Window::RESTORED - window has been restored to normal size and position</p>
+</li><li>
+<p>SDL2::Event::Window::ENTER - window has gained mouse focus</p>
+</li><li>
+<p>SDL2::Event::Window::LEAVE - window has lost mouse focus</p>
+</li><li>
+<p>SDL2::Event::Window::FOCUS_GAINED - window has gained keyboard focus</p>
+</li><li>
+<p>SDL2::Event::Window::FOCUS_LOST -window has lost keyboard focus</p>
+</li><li>
+<p>SDL2::Event::Window::CLOSE -</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_the'>the</span> <span class='id identifier rubyid_window'>window</span> <span class='id identifier rubyid_manager'>manager</span> <span class='id identifier rubyid_requests'>requests</span> <span class='id identifier rubyid_that'>that</span> <span class='id identifier rubyid_the'>the</span> <span class='id identifier rubyid_window'>window</span> <span class='id identifier rubyid_be'>be</span> <span class='id identifier rubyid_closed'>closed</span>
+</code></pre>
+</li></ul>
 
 
   </div>
@@ -433,7 +460,8 @@ window state is changed.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>the associate window id</p>
+    
+<p>the associate window id</p>
 
 
   </div>
@@ -475,7 +503,8 @@ window state is changed.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns inspection string</p>
+    
+<p>Returns inspection string.</p>
 
 
   </div>
@@ -493,7 +522,8 @@ window state is changed.</p>
       
       
         &mdash;
-        <div class='inline'><p>inspection string</p>
+        <div class='inline'>
+<p>inspection string</p>
 </div>
       
     </li>
@@ -506,26 +536,64 @@ window state is changed.</p>
       <pre class="lines">
 
 
-304
 305
 306
 307
 308
 309
 310
-311</pre>
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'event.c', line 304</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/event.c', line 305</span>
 
-static VALUE EvWindow_inspect(VALUE self)
-{
-    SDL_Event* ev; Data_Get_Struct(self, SDL_Event, ev);
-    return rb_sprintf(&quot;&lt;%s: type=%u timestamp=%u window_id=%u event=%u data1=%d data2=%d&gt;&quot;,
-                      rb_obj_classname(self), ev-&gt;common.type, ev-&gt;common.timestamp,
-                      ev-&gt;window.windowID, ev-&gt;window.event,
-                      ev-&gt;window.data1, ev-&gt;window.data2);
-}</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+	<span class='comment'># TODO: this is compressible with a dyanmic filled hash
+</span>	<span class='id identifier rubyid_event_inspect'>event_inspect</span> <span class='op'>=</span>
+		<span class='kw'>case</span> <span class='id identifier rubyid_event'>event</span>
+		<span class='kw'>when</span> <span class='const'>NONE</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>SHOWN</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SHOWN</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>HIDDEN</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>HIDDEN</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>EXPOSED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXPOSED</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>MOVED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MOVED(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data1'>data1</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data2'>data2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>RESIZED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RESIZED(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data1'>data1</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data2'>data2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>SIZE_CHANGED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SIZE_CHANGED(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data1'>data1</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data2'>data2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>MINIMIZED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MINIMIZED</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>MAXIMIZED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MAXIMIZED</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>RESTORED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RESTORED</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>ENTER</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ENTER</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>LEAVE</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LEAVE</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>FOCUS_GAINED</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FOCUS_GAINED</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>FOCUS_LOST</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FOCUS_LOST</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>when</span> <span class='const'>CLOSE</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CLOSE</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>else</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UNKNOWN(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='embexpr_end'>}</span><span class='tstring_content'>)(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data1'>data1</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data2'>data2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+
+	<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='tstring_end'>&quot;</span></span> \
+		<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>timestamp=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_timestamp'>timestamp</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> \
+		<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>window_id=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_window_id'>window_id</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> \
+		<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>event=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event_inspect'>event_inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -536,9 +604,9 @@ static VALUE EvWindow_inspect(VALUE self)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:18 2018 by
+  Generated on Sun Jul  5 05:02:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

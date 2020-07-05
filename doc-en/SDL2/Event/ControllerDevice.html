@@ -6,15 +6,15 @@
 <title>
   Class: SDL2::Event::ControllerDevice
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Event::ControllerDevice";
   relpath = '../../';
 </script>
@@ -96,8 +96,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>event.c<span class="defines">,<br />
-  event.c</span>
+    <dd>ext/sdl2_ext/event.c<span class="defines">,<br />
+  ext/sdl2_ext/event.c</span>
 </dd>
   </dl>
   
@@ -105,16 +105,15 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This class represents <span class='object_link'><a href="../GameController.html" title="SDL2::GameController (class)">controller</a></span> device events (connected/disconnected/remapped).</p>
+    
+<p>This class represents <span class='object_link'><a href="../GameController.html" title="SDL2::GameController (class)">controller</a></span> device events (connected/disconnected/remapped).</p>
 
-<p>The event of this event doesn’t occur. Only the event of the following subclasses
-occur in Ruby/SDL2.</p>
+<p>The event of this event doesn&#39;t occur. Only the event of the following subclasses occur in Ruby/SDL2.</p>
 
-<ul>
-  <li><span class='object_link'><a href="ControllerDeviceAdded.html" title="SDL2::Event::ControllerDeviceAdded (class)">ControllerDeviceAdded</a></span></li>
-  <li><span class='object_link'><a href="ControllerDeviceRemoved.html" title="SDL2::Event::ControllerDeviceRemoved (class)">ControllerDeviceRemoved</a></span></li>
-  <li><span class='object_link'><a href="ControllerDeviceRemapped.html" title="SDL2::Event::ControllerDeviceRemapped (class)">ControllerDeviceRemapped</a></span></li>
-</ul>
+<pre class="code ruby"><code class="ruby">* {SDL2::Event::ControllerDeviceAdded}
+* {SDL2::Event::ControllerDeviceRemoved}
+* {SDL2::Event::ControllerDeviceRemapped}
+</code></pre>
 
 
   </div>
@@ -153,7 +152,8 @@ occur in Ruby/SDL2.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>the controller index.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>the controller index.</p>
 </div></span>
   
 </li>
@@ -194,7 +194,8 @@ occur in Ruby/SDL2.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Inspection string.</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspection string.</p>
 </div></span>
   
 </li>
@@ -231,7 +232,8 @@ occur in Ruby/SDL2.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>the controller index</p>
+    
+<p>the controller index</p>
 
 
   </div>
@@ -273,7 +275,8 @@ occur in Ruby/SDL2.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns inspection string</p>
+    
+<p>Returns inspection string.</p>
 
 
   </div>
@@ -291,7 +294,8 @@ occur in Ruby/SDL2.</p>
       
       
         &mdash;
-        <div class='inline'><p>inspection string</p>
+        <div class='inline'>
+<p>inspection string</p>
 </div>
       
     </li>
@@ -304,16 +308,16 @@ occur in Ruby/SDL2.</p>
       <pre class="lines">
 
 
-894
 895
 896
 897
 898
 899
-900</pre>
+900
+901</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'event.c', line 894</span>
+      <pre class="code"><span class="info file"># File 'ext/sdl2_ext/event.c', line 895</span>
 
 static VALUE ControllerDevice_inspect(VALUE self)
 {
@@ -332,9 +336,9 @@ static VALUE ControllerDevice_inspect(VALUE self)
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:19 2018 by
+  Generated on Sun Jul  5 05:02:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>

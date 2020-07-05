@@ -6,15 +6,15 @@
 <title>
   Module: SDL2::Renderer::Flags
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SDL2::Renderer::Flags";
   relpath = '../../';
 </script>
@@ -78,8 +78,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>video.c<span class="defines">,<br />
-  video.c</span>
+    <dd>ext/sdl2_ext/video.c<span class="defines">,<br />
+  ext/sdl2_ext/video.c</span>
 </dd>
   </dl>
   
@@ -87,12 +87,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>The OR’d bits of the constants of this module represents
-the state of renderers.</p>
+    
+<p>The OR&#39;d bits of the constants of this module represents the state of renderers.</p>
 
-<p>You can use this flag
-<span class='object_link'><a href="../Window.html#create_renderer-instance_method" title="SDL2::Window#create_renderer (method)">when you create a new renderer</a></span>.
-No flags(==0) gives priority to available ACCELERATED renderers.</p>
+<p>You can use this flag <span class='object_link'><a href="../Window.html#create_renderer-instance_method" title="SDL2::Window#create_renderer (method)">when you create a new renderer</a></span>. No flags(==0) gives priority to available ACCELERATED renderers.</p>
 
 
   </div>
@@ -101,13 +99,19 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="SOFTWARE-constant" class="">SOFTWARE =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="SOFTWARE-constant" class="">SOFTWARE =
+          <div class="docstring">
   <div class="discussion">
-    <p>the renderer is a software fallback</p>
+    
+<p>the renderer is a software fallback</p>
 
 
   </div>
@@ -116,13 +120,14 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_SOFTWARE</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="ACCELERATED-constant" class="">ACCELERATED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_SOFTWARE</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ACCELERATED-constant" class="">ACCELERATED =
+          <div class="docstring">
   <div class="discussion">
-    <p>the renderer uses hardware acceleration</p>
+    
+<p>the renderer uses hardware acceleration</p>
 
 
   </div>
@@ -131,13 +136,14 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_ACCELERATED</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="PRESENTVSYNC-constant" class="">PRESENTVSYNC =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_ACCELERATED</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="PRESENTVSYNC-constant" class="">PRESENTVSYNC =
+          <div class="docstring">
   <div class="discussion">
-    <p>present is synchronized with the refresh rate</p>
+    
+<p>present is synchronized with the refresh rate</p>
 
 
   </div>
@@ -146,13 +152,14 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_PRESENTVSYNC</span><span class='rparen'>)</span></pre></dd>
-    
-      <dt id="TARGETTEXTURE-constant" class="">TARGETTEXTURE =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_PRESENTVSYNC</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="TARGETTEXTURE-constant" class="">TARGETTEXTURE =
+          <div class="docstring">
   <div class="discussion">
-    <p>the renderer supports rendering to texture</p>
+    
+<p>the renderer supports rendering to texture</p>
 
 
   </div>
@@ -161,10 +168,11 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_TARGETTEXTURE</span><span class='rparen'>)</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>UINT2NUM</span><span class='lparen'>(</span><span class='const'>SDL_RENDERER_TARGETTEXTURE</span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -177,9 +185,9 @@ No flags(==0) gives priority to available ACCELERATED renderers.</p>
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 25 14:38:17 2018 by
+  Generated on Sun Jul  5 05:02:10 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.7.1).
 </div>
 
     </div>
