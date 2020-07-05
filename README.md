@@ -38,5 +38,5 @@ Licensed under LGPLv3.0 (see COPYING.txt)
 ## Contributors
 
 * Alex Gittemeier (Fork maintainer)
-* @furunkel (Project modernization)
 * Ippei Obayashi <ohai@kmc.gr.jp> (Upstream maintainer)
+* @furunkel (Project modernization)
