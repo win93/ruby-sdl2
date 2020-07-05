@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.test_files = []
   spec.extensions = ["ext/sdl2_ext/extconf.rb"]
 
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rake-compiler", "~> 0.9"
-  spec.add_development_dependency "yard", "~> 0.8"
+  spec.add_development_dependency "yard", "~> 0.9", ">= 0.9.20"
 end
