@@ -1,12 +1,13 @@
 # coding: utf-8
+# frozen_string_literal: true
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sdl2/version'
 
 Gem::Specification.new do |spec|
-  spec.name = "sdl2"
+  spec.name = "sdl2-win93"
   spec.version = SDL2::VERSION
-  spec.summary = "The simple ruby extension library for SDL 2.x"
+  spec.summary = "[Fork of ruby-sdl2 gem] SDL2 library wrapper"
   spec.description = <<-EOS
     Ruby/SDL2 is an extension library to use SDL 2.x
     (Simple DirectMedia Layer). SDL 2.x is quite refined
@@ -17,14 +18,14 @@ Gem::Specification.new do |spec|
     Ruby/SDL is used for games and visual demos.
   EOS
   spec.license = "LGPL-3.0"
-  spec.author = "Ippei Obayashi"
-  spec.email = "ohai@kmc.gr.jp"
-  spec.homepage = "https://github.com/ohai/ruby-sdl2"
+  spec.authors = ["Alex Gittemeier", "furunkel", "Ippei Obayashi"]
+  spec.email = "gittemeier.alex@gmail.com"
+  spec.homepage = "https://github.com/win93/ruby-sdl2"
   spec.files = `git ls-files`.split(/\n/)
   spec.test_files = []
   spec.extensions = ["ext/sdl2_ext/extconf.rb"]
 
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "yard", "~> 0.8"
   spec.add_development_dependency "rake-compiler", "~> 0.9"
+  spec.add_development_dependency "yard", "~> 0.8"
 end

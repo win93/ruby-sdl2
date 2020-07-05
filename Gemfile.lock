@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sdl2 (0.3.5)
+    sdl2-win93 (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -17,7 +17,7 @@ PLATFORMS
 DEPENDENCIES
   rake (~> 10.0)
   rake-compiler (~> 0.9)
-  sdl2!
+  sdl2-win93!
   yard (~> 0.8)
 
 BUNDLED WITH
