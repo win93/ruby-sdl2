@@ -33,6 +33,9 @@ renderer.draw_ellipse(70, 70, 15, 15)
 renderer.draw_blend_mode = SDL2::BlendMode::ADD
 renderer.draw_color = 0xFF0000_FF
 renderer.draw_rect(SDL2::Rect.new(40, 420, 60, 40))
+renderer.draw_blend_mode = SDL2::BlendMode::BLEND
+renderer.draw_color = 0xFFFFFF_66
+renderer.fill_rounded_rect(500, 100, 200, 200, 85)
 
 renderer.present
 

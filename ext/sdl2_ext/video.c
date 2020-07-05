@@ -2174,6 +2174,9 @@ int internal_roundedBoxRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint1
 	// Theory: two calls through the midpoint circle algorithm will gives bounds
 	// for a drawn horizontal line. We eagerly draw over ourselves a bit so this
 	// can be improved performance wise.
+    //
+    // at end of while loop: outline is (x0 +/- x, y0 +/- y) and (x0 +/- y, y0 +/- x)
+    // 8 octants in total, draw between two each line, therefore 4 calls
     {
         int f = 1 - rad;
         int ddF_x = 0;
@@ -2182,19 +2185,20 @@ int internal_roundedBoxRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint1
         int y = rad;
 
         while(x < y) {
-            if(f >= 0) {
+            if (f >= 0) {
+                if (x < y - 1) {
+                    result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy1 - y, r, g, b, a);
+                    result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy2 + y - 1, r, g, b, a);
+                }
                 y--;
                 ddF_y += 2;
                 f += ddF_y;
             }
+
             x++;
             ddF_x += 2;
             f += ddF_x + 1;
-            // outline is (x0 +/- x, y0 +/- y) and (x0 +/- y, y0 +/- x)
-            // 8 octants in total, draw between two each line, therefore 4 calls
-            result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy1 - y, r, g, b, a);
             result |= hlineRGBA(renderer, cx1 - y, cx2 + y, cy1 - x, r, g, b, a);
-            result |= hlineRGBA(renderer, cx1 - x, cx2 + x, cy2 + y - 1, r, g, b, a);
             result |= hlineRGBA(renderer, cx1 - y, cx2 + y, cy2 + x - 1, r, g, b, a);
         }
     }
