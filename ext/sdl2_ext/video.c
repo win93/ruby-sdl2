@@ -2172,8 +2172,7 @@ int internal_roundedBoxRGBA(SDL_Renderer * renderer, Sint16 x1, Sint16 y1, Sint1
 
 	// Draw corners and north/south wedge
 	// Theory: two calls through the midpoint circle algorithm will gives bounds
-	// for a drawn horizontal line. We eagerly draw over ourselves a bit so this
-	// can be improved performance wise.
+	// for a drawn horizontal line.
     //
     // at end of while loop: outline is (x0 +/- x, y0 +/- y) and (x0 +/- y, y0 +/- x)
     // 8 octants in total, draw between two each line, therefore 4 calls
