@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.version = SDL2::VERSION
   spec.summary = "[Fork of ruby-sdl2 gem] SDL2 library wrapper"
   spec.description = <<-EOS
+    [Fork of the ruby-sdl2 gem]
     Ruby/SDL2 is an extension library to use SDL 2.x
     (Simple DirectMedia Layer). SDL 2.x is quite refined
     from SDL 1.x and API is changed.
